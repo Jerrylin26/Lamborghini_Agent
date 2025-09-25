@@ -1,0 +1,181 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|d:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\lamborghini\\c#\\lamborghini\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|solutionrelative:lamborghini\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|d:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\lamborghini\\c#\\lamborghini\\views\\product\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|solutionrelative:lamborghini\\views\\product\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|d:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\lamborghini\\c#\\lamborghini\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|solutionrelative:lamborghini\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|d:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\lamborghini\\c#\\lamborghini\\views\\product\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|solutionrelative:lamborghini\\views\\product\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|d:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\lamborghini\\c#\\lamborghini\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|solutionrelative:lamborghini\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|d:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\lamborghini\\c#\\lamborghini\\models\\detailviewimgmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|solutionrelative:lamborghini\\models\\detailviewimgmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|d:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\lamborghini\\c#\\lamborghini\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|solutionrelative:lamborghini\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|d:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\lamborghini\\c#\\lamborghini\\wwwroot\\js\\custom.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|solutionrelative:lamborghini\\wwwroot\\js\\custom.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|d:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\lamborghini\\c#\\lamborghini\\wwwroot\\file\\\u67B6\u69CB.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|solutionrelative:lamborghini\\wwwroot\\file\\\u67B6\u69CB.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|d:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\lamborghini\\c#\\lamborghini\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47185341-281B-4391-B3F8-DBF4B6604263}|Lamborghini\\Lamborghini.csproj|solutionrelative:lamborghini\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\Program.cs",
+              "RelativeDocumentMoniker": "Lamborghini\\Program.cs",
+              "ToolTip": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\Program.cs",
+              "RelativeToolTip": "Lamborghini\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-24T13:09:50.979Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "custom.js",
+              "DocumentMoniker": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\wwwroot\\js\\custom.js",
+              "RelativeDocumentMoniker": "Lamborghini\\wwwroot\\js\\custom.js",
+              "ToolTip": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\wwwroot\\js\\custom.js",
+              "RelativeToolTip": "Lamborghini\\wwwroot\\js\\custom.js",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAAAJUAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-24T10:35:14.925Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "detailViewimgModel.cs",
+              "DocumentMoniker": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\Models\\detailViewimgModel.cs",
+              "RelativeDocumentMoniker": "Lamborghini\\Models\\detailViewimgModel.cs",
+              "ToolTip": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\Models\\detailViewimgModel.cs",
+              "RelativeToolTip": "Lamborghini\\Models\\detailViewimgModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T10:19:10.62Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "Lamborghini\\Controllers\\ProductController.cs",
+              "ToolTip": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "Lamborghini\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAxwAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-18T09:46:32.316Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Lamborghini\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Lamborghini\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABECAAB2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-20T13:26:39.72Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "List.cshtml",
+              "DocumentMoniker": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\Views\\Product\\List.cshtml",
+              "RelativeDocumentMoniker": "Lamborghini\\Views\\Product\\List.cshtml",
+              "ToolTip": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\Views\\Product\\List.cshtml",
+              "RelativeToolTip": "Lamborghini\\Views\\Product\\List.cshtml",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAqwJUAAAB7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-22T09:37:51.182Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\Views\\Product\\Details.cshtml",
+              "RelativeDocumentMoniker": "Lamborghini\\Views\\Product\\Details.cshtml",
+              "ToolTip": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\Views\\Product\\Details.cshtml",
+              "RelativeToolTip": "Lamborghini\\Views\\Product\\Details.cshtml",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAAD4AAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-20T13:47:21.729Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "\u67B6\u69CB.txt",
+              "DocumentMoniker": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\wwwroot\\file\\\u67B6\u69CB.txt",
+              "RelativeDocumentMoniker": "Lamborghini\\wwwroot\\file\\\u67B6\u69CB.txt",
+              "ToolTip": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\wwwroot\\file\\\u67B6\u69CB.txt",
+              "RelativeToolTip": "Lamborghini\\wwwroot\\file\\\u67B6\u69CB.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-09-18T09:06:42.154Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "About.cshtml",
+              "DocumentMoniker": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\Views\\Home\\About.cshtml",
+              "RelativeDocumentMoniker": "Lamborghini\\Views\\Home\\About.cshtml",
+              "ToolTip": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\Views\\Home\\About.cshtml",
+              "RelativeToolTip": "Lamborghini\\Views\\Home\\About.cshtml",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAEQAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-22T02:17:01.908Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Lamborghini\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\code\\\u806F\u6210_\u5B8F\u7881\u5C08\u6848\\Lamborghini\\c#\\Lamborghini\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Lamborghini\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-18T09:16:26.261Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

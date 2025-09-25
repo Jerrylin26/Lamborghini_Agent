@@ -1,0 +1,77 @@
+| 模組 | Controller               | 主要功能       |
+| -- | ------------------------ | ---------- |
+| 前台 | `HomeController`         | 首頁、靜態頁     |
+| 前台 | `ProductController`      | 商品清單、詳細資訊  |
+| 前台 | `CartController`         | 購物車操作      |
+| 前台 | `OrderController`        | 結帳、訂單歷史    |
+| 前台 | `AccountController`      | 註冊、登入、會員資訊 |
+| 後台 | `AdminProductController` | 商品管理       |
+| 後台 | `AdminOrderController`   | 訂單與出貨管理    |
+| 後台 | `AdminUserController`    | 顧客帳號管理     |
+| 後台 | `AdminReportController`  | 銷售報表       |
+
+-----------------------
+
+1. HomeController
+
+處理首頁、關於我們、聯絡等一般頁面。
+
+Action 範例：Index、About、Contact
+
+----------------------------------------------
+
+2. ProductController
+
+處理商品清單與詳細頁。
+
+Action 範例：
+
+List() → 商品列表
+
+Details(int id) → 單一商品資訊
+
+---------------------------------------------------------------------
+
+3. CartController
+
+處理購物車相關功能。
+
+Action 範例：
+
+Index() → 顯示購物車內容
+
+Add(int productId) → 加入商品
+
+Remove(int productId) → 移除商品
+
+UpdateQuantity(int productId, int qty) → 更新數量
+
+----------------------------------------------
+
+4. OrderController
+
+處理下單與訂單查詢。
+
+Action 範例：
+
+Checkout() → 結帳頁面
+
+Confirm() → 確認訂單
+
+History() → 顯示顧客的歷史訂單
+
+---------------------------------------------------------------------
+
+5. AccountController
+
+處理會員註冊與登入。
+
+Action 範例：
+
+Login()、Register()、Logout()
+
+Profile() → 個人資料
+
+
+
+

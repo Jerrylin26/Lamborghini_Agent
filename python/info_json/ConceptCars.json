@@ -1,0 +1,32 @@
+[
+    {
+        "title":"Terzo Millennio",
+        "img":[
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Festival_automobile_international_2018_-_Lamborghini_Terzo_Millennio_-_014.jpg/1200px-Festival_automobile_international_2018_-_Lamborghini_Terzo_Millennio_-_014.jpg?20180919195929",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Festival_automobile_international_2018_-_Lamborghini_Terzo_Millennio_-_015_%28cropped%29.jpg/1200px-Festival_automobile_international_2018_-_Lamborghini_Terzo_Millennio_-_015_%28cropped%29.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Festival_automobile_international_2018_-_Lamborghini_Terzo_Millennio_-_003.jpg/1599px-Festival_automobile_international_2018_-_Lamborghini_Terzo_Millennio_-_003.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/9/98/Festival_automobile_international_2018_-_Lamborghini_Terzo_Millennio_-_008.jpg",
+            "https://www.largus.fr/images/styles/max_1300x1300/public/images/festival-automobile-2018-24-redimensionner.jpg?itok=GODxf-SJ"
+        ]
+    },
+    {
+        "title":"Asterion",
+        "img":[
+            "https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/0_facelift_2025/model_details/concept/asterion/hero/hero1-desktop.jpg",
+            "https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/0_facelift_2025/model_details/concept/asterion/gallery/gallery1-desktop.jpg",
+            "https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/0_facelift_2025/model_details/concept/asterion/gallery/gallery2-desktop.jpg",
+            "https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/0_facelift_2025/model_details/concept/asterion/gallery/gallery3-desktop.jpg"
+            
+        ]
+    },
+    {
+        "title":"Estoque",
+        "img":[
+            "https://zh.wikipedia.org/zh-tw/%E8%97%8D%E5%AF%B6%E5%A0%85%E5%B0%BCEstoque#/media/File:Lamborghini_Estoque_2.JPG",
+            "https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/0_facelift_2025/model_details/concept/estoque/hero/hero1-desktop.jpg",
+            "https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/0_facelift_2025/model_details/concept/estoque/gallery/gallery1-desktop.jpg",
+            "https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/0_facelift_2025/model_details/concept/estoque/img_txt/Img2.jpg",
+            "https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/0_facelift_2025/model_details/concept/estoque/img_txt/Img1.jpg"
+        ]
+    }
+]

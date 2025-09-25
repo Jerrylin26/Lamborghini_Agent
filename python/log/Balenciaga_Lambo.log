@@ -1,0 +1,224 @@
+❌下載圖片出問題: File ./Urus_SE.json does not exist
+0
+✅成功抓到完整圖片
+1
+❌建立資料夾出問題: [WinError 123] 檔案名稱、目錄名稱或磁碟區標籤語法錯誤。: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK\\1.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK\\2.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK\\3.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK\\4.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK\\5.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK\\6.png"
+✅成功抓到完整圖片
+2
+✅成功抓到完整圖片
+3
+✅成功抓到完整圖片
+4
+❌建立資料夾出問題: [WinError 123] 檔案名稱、目錄名稱或磁碟區標籤語法錯誤。: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI EXPLORER BACKPACK IN BLACK"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI EXPLORER BACKPACK IN BLACK\\1.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI EXPLORER BACKPACK IN BLACK\\2.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI EXPLORER BACKPACK IN BLACK\\3.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI EXPLORER BACKPACK IN BLACK\\4.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI EXPLORER BACKPACK IN BLACK\\5.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI EXPLORER BACKPACK IN BLACK\\6.png"
+✅成功抓到完整圖片
+5
+❌建立資料夾出問題: [WinError 123] 檔案名稱、目錄名稱或磁碟區標籤語法錯誤。: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI CAR KEY CHARM IN SILVER"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI CAR KEY CHARM IN SILVER/BLACK\\1.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI CAR KEY CHARM IN SILVER/BLACK\\2.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI CAR KEY CHARM IN SILVER/BLACK\\3.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI CAR KEY CHARM IN SILVER/BLACK\\4.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI CAR KEY CHARM IN SILVER/BLACK\\5.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI CAR KEY CHARM IN SILVER/BLACK\\6.png"
+✅成功抓到完整圖片
+6
+✅成功抓到完整圖片
+7
+Traceback (most recent call last):
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\Balenciaga_Lambo.py", line 202, in <module>
+    b.download_img()
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\Balenciaga_Lambo.py", line 179, in download_img
+    thumbnail = requests.get(img)
+                ^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\urllib3\connection.py", line 790, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\urllib3\connection.py", line 969, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\urllib3\util\ssl_.py", line 458, in ssl_wrap_socket
+    context.load_verify_locations(ca_certs, ca_cert_dir, ca_cert_data)
+KeyboardInterrupt
+0
+✅成功抓到完整圖片
+1
+❌建立資料夾出問題: [WinError 123] 檔案名稱、目錄名稱或磁碟區標籤語法錯誤。: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK\\1.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK\\2.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK\\3.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK\\4.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK\\5.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK\\6.png"
+✅成功抓到完整圖片
+2
+Traceback (most recent call last):
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\Balenciaga_Lambo.py", line 202, in <module>
+    b.download_img()
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\Balenciaga_Lambo.py", line 179, in download_img
+    thumbnail = requests.get(img)
+                ^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\urllib3\connection.py", line 790, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\urllib3\connection.py", line 969, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\urllib3\util\ssl_.py", line 458, in ssl_wrap_socket
+    context.load_verify_locations(ca_certs, ca_cert_dir, ca_cert_data)
+KeyboardInterrupt
+0
+✅成功抓到完整圖片
+1
+❌建立資料夾出問題: [WinError 123] 檔案名稱、目錄名稱或磁碟區標籤語法錯誤。: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK\\1.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK\\2.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK\\3.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK\\4.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK\\5.png"
+❌下載單張圖片出問題: [Errno 22] Invalid argument: "./Balenciaga_Lambo_pic/MEN'S BALENCIAGA | AUTOMOBILI LAMBORGHINI RODEO HANDBAG LARGE WITH CHARMS IN BLACK\\6.png"
+✅成功抓到完整圖片
+2
+Traceback (most recent call last):
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\Balenciaga_Lambo.py", line 202, in <module>
+    b.download_img()
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\Balenciaga_Lambo.py", line 179, in download_img
+    thumbnail = requests.get(img)
+                ^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\urllib3\connection.py", line 790, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\urllib3\connection.py", line 969, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "D:\code\聯成_宏碁專案\Lamborghini\python\.venv\Lib\site-packages\urllib3\util\ssl_.py", line 458, in ssl_wrap_socket
+    context.load_verify_locations(ca_certs, ca_cert_dir, ca_cert_data)
+KeyboardInterrupt
+0
+✅成功抓到完整圖片
+1
+✅成功抓到完整圖片
+2
+✅成功抓到完整圖片
+3
+✅成功抓到完整圖片
+4
+✅成功抓到完整圖片
+5
+✅成功抓到完整圖片
+6
+✅成功抓到完整圖片
+7
+✅成功抓到完整圖片
+8
+✅成功抓到完整圖片
+9
+✅成功抓到完整圖片
+10
+✅成功抓到完整圖片
+11
+✅成功抓到完整圖片
+12
+✅成功抓到完整圖片
+13
+✅成功抓到完整圖片
+14
+✅成功抓到完整圖片
+15
+✅成功抓到完整圖片
+16
+✅成功抓到完整圖片
+17
+✅成功抓到完整圖片
+18
+✅成功抓到完整圖片
+19
+✅成功抓到完整圖片
+20
+✅成功抓到完整圖片
+21
+✅成功抓到完整圖片
+22
+✅成功抓到完整圖片
+23
+✅成功抓到完整圖片
+24
+✅成功抓到完整圖片
+25
+✅成功抓到完整圖片
