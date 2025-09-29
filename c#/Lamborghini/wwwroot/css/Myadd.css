@@ -1,6 +1,5 @@
 ﻿/* From Uiverse.io by CristianMontoya98 */
-.car_btn {
-    width: 6.5em;
+.car_btn, .car_btn_1 {
     height: 2.3em;
     margin: 0.5em;
     background: black;
@@ -13,6 +12,15 @@
     position: relative;
     z-index: 1;
     overflow: hidden;
+}
+
+.car_btn {
+    width: 6.5em;
+}
+
+.car_btn_1 {
+    width: 8em;
+    background: brown;
 }
 
 button:hover {
@@ -38,3 +46,5 @@ button:hover:after {
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
 }
+
+

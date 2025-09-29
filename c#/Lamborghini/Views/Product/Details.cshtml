@@ -1,4 +1,8 @@
 ﻿@model Lamborghini.Models.detailViewimgModel
+@{
+    Layout = "";
+}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +28,8 @@
     <link rel="stylesheet" href="~/css/owl-carousel.css">
 
     <link rel="stylesheet" href="~/css/lightbox.css">
+
+    <link rel="stylesheet" href="~/css/details.css">
     <!--
 
     TemplateMo 571 Hexashop
@@ -80,6 +86,7 @@
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="index.html">Explore</a></li>
+                            <li class="scroll-to-section"><a href="#explore">Login</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -111,10 +118,21 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="left-images">
-                        @foreach (var file in Model.Files)
+                        @if (Model.Title == "Revuelto" || Model.Title == "Temerario" || Model.Title == "Urus_SE")
                         {
-                            <img src="@Url.Content($"~/img/Lamborghini_pic/{Uri.EscapeDataString(Model.Title)}/{Uri.EscapeDataString(Model.Color)}/{file}")" alt="">
+                            @foreach (var file in Model.Files)
+                            {
+                                <img src="@Url.Content($"~/img/Lamborghini_pic/{Uri.EscapeDataString(Model.Title)}/{Uri.EscapeDataString(Model.Color)}/{file}")" alt="">
+                            }
                         }
+                        else
+                        {
+                            @foreach (var file in Model.Files)
+                            {
+                                <img src="@Url.Content($"~/img/{Uri.EscapeDataString(Model.Title)}/{Uri.EscapeDataString(Model.Subtype)}/{file}")" alt="">
+                            }
+                        }
+
                         
                     </div>
                 </div>
@@ -149,6 +167,14 @@
                             <div class="main-border-button"><a href="#">Add To Cart</a></div>
 
                         </div>
+                        <br />
+                        <br />
+                        <br />
+                        <form asp-controller="Product" asp-action="List" method="get">
+                            <button type="submit" id="details_back_button">回上一頁</button>
+                        </form>
+                       
+
                     </div>
                 </div>
             </div>

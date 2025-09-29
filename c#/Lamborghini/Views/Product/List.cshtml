@@ -1,5 +1,7 @@
 ﻿@model Lamborghini.Models.detailViewimgModel
-
+@{
+    Layout = "";
+}
 
 
 <!DOCTYPE html>
@@ -85,6 +87,7 @@
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="~/Home/index">Explore</a></li>
+                            <li class="scroll-to-section"><a href="#explore">Login</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -132,6 +135,25 @@
                         </button>
                         
                     </div><br /><br />
+                    <div style="display:flex; justify-content:space-around;">
+
+                        <button class="car_btn_1" name="car_type" value="Aventador">
+                            Aventador
+                        </button>
+                        <button class="car_btn_1" name="car_type" value="ConceptCars">
+                            Concept_Car
+                        </button>
+                        <button class="car_btn_1" name="car_type" value="Huracán">
+                            Huracán
+                        </button>
+                        <button class="car_btn_1" name="car_type" value="LimitedModel">
+                            LimitedModel
+                        </button>
+                        <button class="car_btn_1" name="car_type" value="sportCar" >
+                            sportCar
+                        </button>
+
+                    </div><br /><br />
                     
                 </div>
             </div>
@@ -140,34 +162,75 @@
             <div class="row" id="ajax_box">
                 
                 <!-- Product/List HTTP GET -->
-                @foreach(var file in Model.Files)
+                @if (Model.Title == "Revuelto" || Model.Title == "Temerario" || Model.Title == "Urus_SE")
                 {
-                    <div class="col-lg-4">
-                        <div class="item">
-                            <div class="thumb">
-                                <div class="hover-content">
-                                    <ul>
-                                        <li><a href="~/Product/Details?car_type=@Model.Title&car_color=@file.Split("\\")[0]"><i class="fa fa-eye"></i></a></li>
-                                        <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                        <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                    @foreach (var file in Model.Files)
+                    {
+                        <div class="col-lg-4">
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="~/Product/Details?car_type=@Model.Title&car_color=@file.Split("\\")[0]"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div style="width:350px; height:233.22px; overflow:hidden;">
+                                        <img src="@Url.Content($"~/img/Lamborghini_pic/{Uri.EscapeDataString(Model.Title)}/{Uri.EscapeDataString(file)}")" style="width:100%; height:100%; object-fit:cover;">
+                                    </div>
+                                    
+                                </div>
+                                <div class="down-content">
+                                    <h4>@file.Split("\\")[0]</h4>
+                                    <span>$120.00</span>
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
                                     </ul>
                                 </div>
-                                <img src="@Url.Content($"~/img/Lamborghini_pic/{Uri.EscapeDataString(Model.Title)}/{Uri.EscapeDataString(file)}")" alt="">
-                            </div>
-                            <div class="down-content">
-                                <h4>@file.Split("\\")[0]</h4>
-                                <span>$120.00</span>
-                                <ul class="stars">
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                </ul>
                             </div>
                         </div>
-                    </div>
+                    }
                 }
+                else
+                {
+                    @foreach (var file in Model.Files)
+                    {
+                        <div class="col-lg-4">
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="~/Product/Details_1?car_type=@Model.Title&subtype=@file.Split("\\")[0]"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div style="width:350px; height:233.22px; overflow:hidden;">
+                                        <img src="@Url.Content($"~/img/{Uri.EscapeDataString(Model.Title)}/{Uri.EscapeDataString(file)}")" style="width:100%; height:100%; object-fit:cover;">
+                                    </div>
+                                    
+                                </div>
+                                <div class="down-content">
+                                    <h4>@file.Split("\\")[0]</h4>
+                                    <span>$120.00</span>
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
                
                 
                 <div class="col-lg-12">
@@ -311,6 +374,7 @@
                     url: "/Product/List", 
                     data: { car_type: car_type },
                     dataType: 'json',
+                    withCredentials: true,
                     success: function (result) {
                         console.log(result);
 
@@ -356,6 +420,67 @@
             });
         });
     </script>
+
+
+    <script>
+        $(document).ready(function () {
+            $(".car_btn_1").click(function () {
+                var car_type = $(this).val() + "_Lambo_pic";
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Product/List_1",
+                    data: { car_type: car_type },
+                    dataType: 'json',
+                    withCredentials: true,
+                    success: function (result) {
+                        console.log(result);
+
+                        var html = "";
+                        $.each(result.files, function (i, file) {
+                            var subtype = file.split("\\")[0];
+                            var imgSrc = "/img/"+ encodeURIComponent(result.title) + "/" + encodeURIComponent(file);
+
+                            html += `
+        <div class="col-lg-4">
+            <div class="item">
+                <div class="thumb">
+                    <div class="hover-content">
+                        <ul>
+                            <li><a href="/Product/Details_1?car_type=${encodeURIComponent(result.title)}&subtype=${encodeURIComponent(subtype)}"><i class="fa fa-eye"></i></a></li>
+                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div style="width:350px; height:233.22px; overflow:hidden;">
+                        <img src="${imgSrc}" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                </div>
+                <div class="down-content">
+                    <h4>${subtype}</h4>
+                    <span>$120.00</span>
+                    <ul class="stars">
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>`;
+                        });
+
+                        $("#ajax_box").html(html); // 更新圖片區塊
+                    },
+                    error: function (xhr, status, error) {
+                        alert("發生錯誤：" + error);
+                    }
+                });
+            });
+        });
+    </script>
+
 
 </body>
 

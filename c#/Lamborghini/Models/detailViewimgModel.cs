@@ -6,5 +6,7 @@
         public List<string?> Files { get; set; }
         public int? Count { get; set; }
         public string? Color { get; set; }
+
+        public string? Subtype { get; set; }
     }
 }
