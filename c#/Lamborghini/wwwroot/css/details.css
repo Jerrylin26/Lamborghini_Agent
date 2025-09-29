@@ -1,0 +1,44 @@
+﻿#details_back_button,
+#details_back_button:focus {
+    position: relative;
+    min-width: 200px;
+    border: none;
+    border-radius: 4px;
+    background-color: #16a085;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition-duration: 0.4s;
+    padding: 10px 20px;
+    box-shadow: 0 5px 15px #193047;
+}
+
+    #details_back_button:hover {
+        background: #ffffff;
+        box-shadow: 0px 2px 10px 5px #1abc9c;
+        color: #000000;
+    }
+
+    #details_back_button:after {
+        content: "";
+        display: block;
+        position: absolute;
+        background: #1abc9c;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s
+    }
+
+    #details_back_button:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s;
+    }

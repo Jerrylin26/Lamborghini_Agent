@@ -1,0 +1,13 @@
+﻿
+
+/* 滑動商品視窗 */
+.carousel-item img {
+    height: 50vh; /* 高度佔視窗 60% */
+    object-fit: cover; /* 裁切超出部分，保持比例 */
+}
+
+#carouselExampleIndicators h2 {
+    font-size: 34px;
+    font-weight: 700;
+    color: #2a2a2a;
+}

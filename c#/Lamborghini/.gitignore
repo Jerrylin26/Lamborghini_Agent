@@ -32,7 +32,7 @@ _ReSharper*/
 # Publish output
 *.Publish.xml
 publish/
-wwwroot/
+
 
 # Others
 *.log
