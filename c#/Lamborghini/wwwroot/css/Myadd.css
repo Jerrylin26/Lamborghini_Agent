@@ -1,4 +1,45 @@
 ﻿/* From Uiverse.io by CristianMontoya98 */
+/* 查看所有款式 */
+/* From Uiverse.io by iZOXVL */
+.botton-elegante {
+    padding: 15px 30px;
+    border: 2px solid #2c2c2c;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: all 0.4s ease;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+.botton-elegante::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient( circle, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 70% );
+    transform: scale(0);
+    transition: transform 0.5s ease;
+}
+
+.botton-elegante:hover::after {
+    transform: scale(4);
+}
+
+.botton-elegante:hover {
+    border-color: #666666;
+    background: #292929;
+}
+
+/*------------------------------------------------*/
+
+
 .car_btn, .car_btn_1 {
     height: 2.3em;
     margin: 0.5em;
@@ -23,11 +64,13 @@
     background: brown;
 }
 
-button:hover {
+.car_btn:hover, 
+.car_btn_1:hover {
     color: black;
 }
 
-button:after {
+.car_btn:after, 
+.car_btn_1:after {
     content: "Lambo";
     font-size: 1rem;
     background: white;
@@ -41,10 +84,14 @@ button:after {
     transition: all 0.5s;
 }
 
-button:hover:after {
+.car_btn:hover:after, 
+.car_btn_1:hover:after {
     transform: skewX(-45deg) scale(1, 1);
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
 }
+
+
+
 
 
