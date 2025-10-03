@@ -17,7 +17,7 @@ namespace Lamborghini.Controllers
         public IActionResult Index()
         {
             DBmanager dbmanager = new DBmanager();
-            List<account> accounts = dbmanager.getAccount();
+            List<Member> accounts = dbmanager.getAccount();
             ViewBag.accounts = accounts;
             return View();
         }
@@ -28,7 +28,7 @@ namespace Lamborghini.Controllers
         }
 
         [HttpPost]
-        public IActionResult addAccount(account user)
+        public IActionResult addAccount(Member user)
         {
 
             DBmanager dbmanager = new DBmanager();

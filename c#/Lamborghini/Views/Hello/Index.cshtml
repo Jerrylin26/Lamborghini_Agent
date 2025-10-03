@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    List<account> accounts = ViewBag.accounts;
+    List<Member> accounts = ViewBag.accounts;
 }
 
 <div class="text-center">
@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (account user in accounts)
+            @* @foreach (Member user in accounts)
             {
                 <tr>
                     <th>@user.ID</th>
@@ -24,7 +24,7 @@
                     <th>@user.password</th>
                     <th>@user.age</th>
                 </tr>
-            }
+            } *@
         </tbody>
     </table>
 

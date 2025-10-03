@@ -15,6 +15,7 @@ import json
 import requests
 import os
 import sys
+import re
 
 class Lamborghini:
 
@@ -158,11 +159,13 @@ class Lamborghini:
                 try:
                     print(idx)
                     id = info['idx']
+                    title = info['title']
                     path_count = 1
-                    path = f"./Balenciaga_Lambo_pic/{id}"
+                    path = f"./Balenciaga_Lambo_pic/{title}"
                     while os.path.exists(path):
-                        path = f"./Balenciaga_Lambo_pic/{id}/{path_count}"
+                        path = f"./Balenciaga_Lambo_pic/{title}/{path_count}"
                         path_count += 1
+                        print("重複title名稱")
 
                     os.makedirs(path, mode=0o777)
                     
@@ -198,8 +201,8 @@ class Lamborghini:
     
 
 if __name__ == "__main__":
-    b = Lamborghini()
-    b.download_img()
+    # b = Lamborghini()
+    # b.download_img()
 
     # df = pd.read_json('./Balenciaga_Lambo.json')
     # df1 = pd.read_json('./Balenciaga_Lambo_1.json')
@@ -212,7 +215,7 @@ if __name__ == "__main__":
     #     text = json.load(f)
     
     # for id, t in enumerate(text):
-    #     t['idx'] = id
+    #     t['price'] = t['price'].replace('$','').strip()
 
     # with open('./info_json/Balenciaga_Lambo_28.json', 'w', encoding='utf-8') as f:
     #     json.dump(text, f, indent=4, ensure_ascii=False)
