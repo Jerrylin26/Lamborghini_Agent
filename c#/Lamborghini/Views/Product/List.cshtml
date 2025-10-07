@@ -1,4 +1,5 @@
 ﻿@model Lamborghini.Models.detailViewimgModel
+
 @{
     Layout = "";
 }
@@ -87,7 +88,7 @@
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="~/Home/index">Explore</a></li>
-                            <li class="scroll-to-section"><a href="#explore">Login</a></li>
+                            <li class="scroll-to-section"><a href="/Account/Login">Login</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -171,19 +172,19 @@
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="~/Product/Details?car_type=@Model.Title&car_color=@file.Split("\\")[0]"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="~/Product/Details?car_type=@Model.Title&car_color=@file.CarModel"><i class="fa fa-eye"></i></a></li>
                                             <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a class="cart_add" data-series="@file.CarSeries" data-model="@file.CarModel" data-pid="@file.PID"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <div style="width:350px; height:233.22px; overflow:hidden;">
-                                        <img src="@Url.Content($"~/img/Lamborghini_pic/{Uri.EscapeDataString(Model.Title)}/{Uri.EscapeDataString(file)}")" style="width:100%; height:100%; object-fit:cover;">
+                                        <img src="@Url.Content($"~/img/Lamborghini_pic/{Uri.EscapeDataString(Model.Title)}/{Uri.EscapeDataString(file.CarModel)}/{Uri.EscapeDataString(file.Img)}")" style="width:100%; height:100%; object-fit:cover;">
                                     </div>
                                     
                                 </div>
                                 <div class="down-content">
-                                    <h4>@file.Split("\\")[0]</h4>
-                                    <span>$120.00</span>
+                                    <h4>@file.CarModel</h4>
+                                    <span>TWD @($"{file.Price:N0}")</span>
                                     <ul class="stars">
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>
@@ -205,19 +206,19 @@
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="~/Product/Details_1?car_type=@Model.Title&subtype=@file.Split("\\")[0]"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="~/Product/Details_1?car_type=@Model.Title&subtype=@file.CarModel"><i class="fa fa-eye"></i></a></li>
                                             <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a class="cart_add" data-series="@file.CarSeries" data-model="@file.CarModel" data-pid="@file.PID"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <div style="width:350px; height:233.22px; overflow:hidden;">
-                                        <img src="@Url.Content($"~/img/{Uri.EscapeDataString(Model.Title)}/{Uri.EscapeDataString(file)}")" style="width:100%; height:100%; object-fit:cover;">
+                                        <img src="@Url.Content($"~/img/{Uri.EscapeDataString(Model.Title)}_Lambo_pic/{Uri.EscapeDataString(file.CarModel)}/{Uri.EscapeDataString(file.Img)}")" style="width:100%; height:100%; object-fit:cover;">
                                     </div>
                                     
                                 </div>
                                 <div class="down-content">
-                                    <h4>@file.Split("\\")[0]</h4>
-                                    <span>$120.00</span>
+                                    <h4>@file.CarModel</h4>
+                                    <span>TWD @($"{file.Price:N0}")</span>
                                     <ul class="stars">
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>
@@ -360,8 +361,8 @@
 
                         var html = "";
                         $.each(result.files, function (i, file) {
-                            var carColor = file.split("\\")[0];
-                            var imgSrc = "/img/Lamborghini_pic/" + encodeURIComponent(result.title) + "/" + encodeURIComponent(file);
+                            var carColor = file.carModel;
+                            var imgSrc = "/img/Lamborghini_pic/" + encodeURIComponent(result.title) + "/" + encodeURIComponent(carColor) + "/" + encodeURIComponent(file.img);
 
                             html += `
         <div class="col-lg-4">
@@ -371,14 +372,14 @@
                         <ul>
                             <li><a href="/Product/Details?car_type=${encodeURIComponent(result.title)}&car_color=${encodeURIComponent(carColor)}"><i class="fa fa-eye"></i></a></li>
                             <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a class="cart_add" data-series="${file.carSeries}" data-model="${file.carModel}" data-pid="${file.pid}"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <img src="${imgSrc}" alt="">
                 </div>
                 <div class="down-content">
-                    <h4>${carColor}</h4>
-                    <span>$120.00</span>
+                    <h4>${carColor}</h4> 
+                    <span>TWD ${Number(file.price).toLocaleString()}</span>
                     <ul class="stars">
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
@@ -405,7 +406,7 @@
     <script>
         $(document).ready(function () {
             $(".car_btn_1").click(function () {
-                var car_type = $(this).val() + "_Lambo_pic";
+                var car_type = $(this).val() ;
 
                 $.ajax({
                     type: "POST",
@@ -418,8 +419,8 @@
 
                         var html = "";
                         $.each(result.files, function (i, file) {
-                            var subtype = file.split("\\")[0];
-                            var imgSrc = "/img/"+ encodeURIComponent(result.title) + "/" + encodeURIComponent(file);
+                            var subtype = file.carModel;
+                            var imgSrc = "/img/"+ encodeURIComponent(result.title) + "_Lambo_pic" + "/" + encodeURIComponent(subtype) + "/" + encodeURIComponent(file.img);
 
                             html += `
         <div class="col-lg-4">
@@ -429,7 +430,7 @@
                         <ul>
                             <li><a href="/Product/Details_1?car_type=${encodeURIComponent(result.title)}&subtype=${encodeURIComponent(subtype)}"><i class="fa fa-eye"></i></a></li>
                             <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a class="cart_add" data-series="${file.carSeries}" data-model="${file.carModel}" data-pid="${file.pid}"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div style="width:350px; height:233.22px; overflow:hidden;">
@@ -438,7 +439,7 @@
                 </div>
                 <div class="down-content">
                     <h4>${subtype}</h4>
-                    <span>$120.00</span>
+                    <span>TWD ${Number(file.price).toLocaleString()}</span>
                     <ul class="stars">
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
@@ -452,6 +453,37 @@
                         });
 
                         $("#ajax_box").html(html); // 更新圖片區塊
+                    },
+                    error: function (xhr, status, error) {
+                        alert("發生錯誤：" + error);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- cart_add ajax-->
+    <script>
+        $(document).ready(function () {
+           $(document).on("click", ".cart_add", function () {
+                var CarSeries = $(this).data("series");
+                var CarModel = $(this).data("model");
+                var PID = $(this).data("pid");
+                console.log(CarSeries, CarModel, PID,"here");
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Cart/AddToCookie",
+                    data: { Series: CarSeries, Model:CarModel, PID:PID },
+                    dataType: 'json',
+                    withCredentials: true,
+                    success: function (result) {
+
+                        if (result.success) {
+                            alert(`${foodName} : 已成功加入清單！`);
+                            // $("#cart_count").text(result.totalQuantity); 更新購物車數量
+                        }
+
                     },
                     error: function (xhr, status, error) {
                         alert("發生錯誤：" + error);

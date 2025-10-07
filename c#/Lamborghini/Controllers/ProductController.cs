@@ -28,26 +28,21 @@ namespace Lamborghini.Controllers
 
             // 用session記錄上次選擇的車款 讓返回頁面正常
             var default_car_type = HttpContext.Session.GetString("LastCarType") ?? "Temerario";
-            if (default_car_type == "Revuelto" || default_car_type == "Temerario" || default_car_type == "Urus_SE")
-            {
-                folderPath = Path.Combine(_env.WebRootPath, "img", "Lamborghini_pic", default_car_type);
-            }
-            else
-            {
-                folderPath = Path.Combine(_env.WebRootPath, "img", default_car_type);
-            }
 
-            var allFiles = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories).ToList();
-            List<string?> randomFiles = new List<string?>();
 
-            if (allFiles.Any())
+            List<Product?> randomFiles = new List<Product?>();
+
+            DBmanager dbmanager = new DBmanager();
+            List <Product> products = dbmanager.getProduct(default_car_type).Where(p => p.IsDisplay).ToList();
+
+            if (products.Any())
             {
                 var rd = new Random();
 
-                randomFiles = allFiles
+                randomFiles = products
+                    .GroupBy(p => p.CarModel) // 只取每個車款的第一張圖片
+                    .Select(g => g.First())
                     .OrderBy(x => rd.Next())
-                    .Take(9)
-                    .Select(f => Path.GetRelativePath(folderPath, f))
                     .ToList();
             }
 
@@ -68,20 +63,22 @@ namespace Lamborghini.Controllers
             // 用session記錄上次選擇的車款 讓返回頁面正常
             HttpContext.Session.SetString("LastCarType", car_type);
 
-            var folderPath = Path.Combine(_env.WebRootPath, "img", "Lamborghini_pic", car_type);
-            var allFiles = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories).ToList();
-            List<string?> randomFiles = new List<string?>();
+            List<Product?> randomFiles = new List<Product?>();
 
-            if (allFiles.Any())
+            DBmanager dbmanager = new DBmanager();
+            List<Product> products = dbmanager.getProduct(car_type).Where(p => p.IsDisplay).ToList();
+
+            if (products.Any())
             {
                 var rd = new Random();
 
-                randomFiles = allFiles
+                randomFiles = products
+                    .GroupBy(p => p.CarModel) // 只取每個車款的第一張圖片
+                    .Select(g => g.First())
                     .OrderBy(x => rd.Next())
-                    .Take(9)
-                    .Select(f => Path.GetRelativePath(folderPath, f))
                     .ToList();
             }
+
 
             // Ajax
             return Json(new { title = car_type, files = randomFiles });
@@ -96,19 +93,19 @@ namespace Lamborghini.Controllers
             HttpContext.Session.SetString("LastCarType", car_type);
 
 
+            List<Product?> randomFiles = new List<Product?>();
 
-            var folderPath = Path.Combine(_env.WebRootPath, "img", car_type);
-            var allFiles = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories).ToList();
-            List<string?> randomFiles = new List<string?>();
+            DBmanager dbmanager = new DBmanager();
+            List <Product> products = dbmanager.getProduct(car_type).Where(p => p.IsDisplay).ToList();
 
-            if (allFiles.Any())
+            if (products.Any())
             {
                 var rd = new Random();
 
-                randomFiles = allFiles
+                randomFiles = products
+                    .GroupBy(p => p.CarModel) // 只取每個車款的第一張圖片
+                    .Select(g => g.First())
                     .OrderBy(x => rd.Next())
-                    .Take(9)
-                    .Select(f => Path.GetRelativePath(folderPath, f))
                     .ToList();
             }
 
@@ -124,7 +121,7 @@ namespace Lamborghini.Controllers
         // 進入單一車款頁面
 
         //[HttpPost]
-        public IActionResult Details(string car_type, string car_color)
+        public IActionResult Details(string car_type, string car_color) // ex: Urus_SE    Grigio China Shiny
         {
             string default_car_type = "Urus_SE";
             string default_car_color = "Grigio China Shiny";
@@ -138,17 +135,8 @@ namespace Lamborghini.Controllers
             }
 
 
-            var folderPath = Path.Combine(_env.WebRootPath, "img", "Lamborghini_pic", car_type, car_color);
-
-            //防呆
-            if (!Directory.Exists(folderPath))
-            {
-                car_type = default_car_type;
-                car_color = default_car_color;
-                folderPath = Path.Combine(_env.WebRootPath, "img", "Lamborghini_pic", car_type, car_color);
-            }
-
-            List<string> files = Directory.Exists(folderPath) ? Directory.GetFiles(folderPath).Select(Path.GetFileName).ToList() : new List<string>();
+            DBmanager dbmanager = new DBmanager();
+            List<Product> files = dbmanager.getDetail(car_type, car_color);
 
             var model = new detailViewimgModel
             {
@@ -174,19 +162,10 @@ namespace Lamborghini.Controllers
                 car_type = default_car_type;
                 subtype = default_car_subtype;
             }
+            
 
-
-            var folderPath = Path.Combine(_env.WebRootPath, "img", car_type, subtype);
-
-            //防呆
-            if (!Directory.Exists(folderPath))
-            {
-                car_type = default_car_type;
-                subtype = default_car_subtype;
-                folderPath = Path.Combine(_env.WebRootPath, "img", car_type, subtype);
-            }
-
-            List<string> files = Directory.Exists(folderPath) ? Directory.GetFiles(folderPath).Select(Path.GetFileName).ToList() : new List<string>();
+            DBmanager dbmanager = new DBmanager();
+            List<Product> files = dbmanager.getDetail(car_type, subtype);
 
             var model = new detailViewimgModel
             {
@@ -213,7 +192,7 @@ namespace Lamborghini.Controllers
 
         
 
-        public IActionResult addProduct(Product user)
+        public IActionResult addProduct()
         {
 
             string fileName;
@@ -256,9 +235,9 @@ namespace Lamborghini.Controllers
                         string car = Path.GetFileName(carPath); // 只要資料夾名稱
                         foreach (var img in imgs)
                         {
-                            string relativePath = Path.GetRelativePath(_env.WebRootPath, img)
+                            string FileName = Path.GetFileName(img)
                                     .Replace("\\", "/");
-                            products.Add(new Product { CarSeries = "Aventador", CarModel = car, Img = relativePath }); // CarSeries CarModel Img
+                            products.Add(new Product { CarSeries = "Aventador",CarSeriesID = 1, CarModel = car, Img = FileName }); // CarSeries CarSeriesID CarModel Img
                         }
                     }
 
@@ -282,9 +261,9 @@ namespace Lamborghini.Controllers
                         string car = Path.GetFileName(carPath); // 只要資料夾名稱
                         foreach (var img in imgs)
                         {
-                            string relativePath = Path.GetRelativePath(_env.WebRootPath, img)
+                            string FileName = Path.GetFileName(img)
                                     .Replace("\\", "/");
-                            products.Add(new Product { CarSeries = "ConceptCars", CarModel = car, Img = relativePath }); // CarSeries CarModel Img
+                            products.Add(new Product { CarSeries = "ConceptCars", CarSeriesID = 2, CarModel = car, Img = FileName }); // CarSeries CarModel Img
                         }
                     }
                 }
@@ -307,9 +286,9 @@ namespace Lamborghini.Controllers
                         string car = Path.GetFileName(carPath); // 只要資料夾名稱
                         foreach (var img in imgs)
                         {
-                            string relativePath = Path.GetRelativePath(_env.WebRootPath, img)
+                            string FileName = Path.GetFileName(img)
                                     .Replace("\\", "/");
-                            products.Add(new Product { CarSeries = "Huracán", CarModel = car, Img = relativePath }); // CarSeries CarModel Img
+                            products.Add(new Product { CarSeries = "Huracán", CarSeriesID = 3, CarModel = car, Img = FileName }); // CarSeries CarModel Img
                         }
                     }
                 }
@@ -332,9 +311,9 @@ namespace Lamborghini.Controllers
                         string car = Path.GetFileName(carPath); // 只要資料夾名稱
                         foreach (var img in imgs)
                         {
-                            string relativePath = Path.GetRelativePath(_env.WebRootPath, img)
+                            string FileName = Path.GetFileName(img)
                                     .Replace("\\", "/");
-                            products.Add(new Product { CarSeries = "LimitedModel", CarModel = car, Img = relativePath }); // CarSeries CarModel Img
+                            products.Add(new Product { CarSeries = "LimitedModel", CarSeriesID = 4, CarModel = car, Img = FileName }); // CarSeries CarModel Img
                         }
                     }
                 }
@@ -357,9 +336,9 @@ namespace Lamborghini.Controllers
                         string car = Path.GetFileName(carPath); // 只要資料夾名稱
                         foreach (var img in imgs)
                         {
-                            string relativePath = Path.GetRelativePath(_env.WebRootPath, img)
+                            string FileName = Path.GetFileName(img)
                                     .Replace("\\", "/");
-                            products.Add(new Product { CarSeries = "sportCar", CarModel = car, Img = relativePath }); // CarSeries CarModel Img
+                            products.Add(new Product { CarSeries = "sportCar", CarSeriesID = 5, CarModel = car, Img = FileName }); // CarSeries CarModel Img
                         }
                     }
                 }
@@ -382,9 +361,9 @@ namespace Lamborghini.Controllers
                         string car = Path.GetFileName(carPath); // 只要資料夾名稱
                         foreach (var img in imgs)
                         {
-                            string relativePath = Path.GetRelativePath(_env.WebRootPath, img)
+                            string FileName = Path.GetFileName(img)
                                     .Replace("\\", "/");
-                            productforcolor.Add(new Product { CarSeries = "Revuelto", CarModel = car, Img = relativePath }); // CarSeries CarModel Img
+                            productforcolor.Add(new Product { CarSeries = "Revuelto", CarSeriesID = 6, CarModel = car, Img = FileName }); // CarSeries CarModel Img
                         }
                     }
                 }
@@ -407,9 +386,9 @@ namespace Lamborghini.Controllers
                         string car = Path.GetFileName(carPath); // 只要資料夾名稱
                         foreach (var img in imgs)
                         {
-                            string relativePath = Path.GetRelativePath(_env.WebRootPath, img)
+                            string FileName = Path.GetFileName(img)
                                     .Replace("\\", "/");
-                            productforcolor.Add(new Product { CarSeries = "Temerario", CarModel = car, Img = relativePath }); // CarSeries CarModel Img
+                            productforcolor.Add(new Product { CarSeries = "Temerario", CarSeriesID = 7, CarModel = car, Img = FileName }); // CarSeries CarModel Img
                         }
                     }
                 }
@@ -433,9 +412,9 @@ namespace Lamborghini.Controllers
 
                         foreach (var img in imgs)
                         {
-                            string relativePath = Path.GetRelativePath(_env.WebRootPath, img)
+                            string FileName = Path.GetFileName(img)
                                     .Replace("\\", "/");
-                            productforcolor.Add(new Product { CarSeries = "Urus_SE", CarModel = car, Img = relativePath }); // CarSeries CarModel Img
+                            productforcolor.Add(new Product { CarSeries = "Urus_SE", CarSeriesID = 8, CarModel = car, Img = FileName }); // CarSeries CarModel Img
                         }
                     }
 
@@ -454,9 +433,10 @@ namespace Lamborghini.Controllers
                                  {
                                      CarModel = p.CarModel,
                                      Price = pp.price,
-                                     CarSeries = p.CarSeries,
+                                     CarSeriesID = p.CarSeriesID,
                                      Img = p.Img,
-                                     IsDisplay = true
+                                     IsDisplay = true,
+                                     CarSeries = p.CarSeries
                                  }).ToList();
 
                 // 寫入資料庫 給顏色分類的車
@@ -466,9 +446,10 @@ namespace Lamborghini.Controllers
                                   {
                                       CarModel = p.CarModel,
                                       Price = pp.price,
-                                      CarSeries = p.CarSeries,
+                                      CarSeriesID = p.CarSeriesID,
                                       Img = p.Img,
-                                      IsDisplay = true
+                                      IsDisplay = true,
+                                      CarSeries = p.CarSeries
                                   }).ToList();
 
 
@@ -476,9 +457,21 @@ namespace Lamborghini.Controllers
                 Debug.WriteLine("要寫入資料數量：" + productdb2.Count);
 
 
+                // 寫入 CarSeriesID 資料表
+                //foreach (var productGroup in productdb.GroupBy(p => p.CarSeriesID))
+                //{
+                //    dbmanager.newCarSeriesID(productGroup.First());
+
+                //}
+                //foreach (var productGroup in productdb2.GroupBy(p => p.CarSeriesID))
+                //{
+                //    dbmanager.newCarSeriesID(productGroup.First());
+
+                //}
+
                 // 有兩個因為資料表結構不同
                 // 存 DB 並取得 PID 再存圖片
-                foreach (var productGroup in productdb.GroupBy(p => new { p.CarSeries, p.CarModel }))
+                foreach (var productGroup in productdb.GroupBy(p => new { p.CarSeriesID, p.CarModel }))
                 {
                     var firstProduct = productGroup.First();
 
@@ -488,7 +481,7 @@ namespace Lamborghini.Controllers
                     // 再把所有圖片寫入 ProductImage
                     foreach (var imgProduct in productGroup)
                     {
-                        dbmanager.newProductImage(newProductId, imgProduct.Img);
+                        dbmanager.newProductImage(newProductId, imgProduct);
                     }
                 }
                 Debug.WriteLine("寫入資料庫完成");
@@ -505,7 +498,7 @@ namespace Lamborghini.Controllers
                     // 再把所有圖片寫入 ProductImage
                     foreach (var imgProduct in productGroup)
                     {
-                        dbmanager.newProductImage(newProductId, imgProduct.Img);
+                        dbmanager.newProductImage(newProductId, imgProduct);
                     }
                 }
                 Debug.WriteLine("寫入資料庫完成");
@@ -525,7 +518,7 @@ namespace Lamborghini.Controllers
             public string img_Balenciaga { get; set; } // 專門給 Balenciaga_Lambo_28.json 用的
             public string price { get; set; } // 專門給 Balenciaga_Lambo_28.json 用的
         }
-        public IActionResult addAccessoryProduct(AccessoryProduct user)
+        public IActionResult addAccessoryProduct()
         {
             string fileName;
             string filePath;
@@ -550,9 +543,9 @@ namespace Lamborghini.Controllers
 
                         foreach (var img in imgs)
                         {
-                            string relativePath = Path.GetRelativePath(_env.WebRootPath, img)
+                            string FileName = Path.GetFileName(img)
                                     .Replace("\\", "/");
-                            imgObj.Add(new PriceItem_Balenciaga { title = name, img_Balenciaga = relativePath }); // Item Img
+                            imgObj.Add(new PriceItem_Balenciaga { title = name, img_Balenciaga = FileName }); // Item Img
                         }
                     }
 
@@ -575,13 +568,15 @@ namespace Lamborghini.Controllers
                                      join pp in imgObj on p.title equals pp.title
                                      select new AccessoryProduct
                                       {
-                                          Collection = "Balenciaga_Lambo",
+                                          CollectionID = 1,
                                           Price = float.Parse(p.price),
                                           Item = p.title,
                                           Img = pp.img_Balenciaga, // 多張pic
                                           Description = p.detail,
                                           IsDisplay = true,
-                                      }).ToList();
+                                          Collection = "Balenciaga_Lambo"
+
+                                     }).ToList();
 
 
                     Debug.WriteLine("要寫入資料數量：" + productdb.Count);
@@ -598,7 +593,7 @@ namespace Lamborghini.Controllers
                         // 再把所有圖片寫入 ProductImage
                         foreach (var imgProduct in productGroup)
                         {
-                            dbmanager.newAccessoryProductImage(newProductId, imgProduct.Img);
+                            dbmanager.newAccessoryProductImage(newProductId, imgProduct);
                         }
                     }
                     Debug.WriteLine("寫入資料庫完成");

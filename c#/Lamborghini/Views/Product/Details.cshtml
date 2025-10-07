@@ -122,14 +122,14 @@
                         {
                             @foreach (var file in Model.Files)
                             {
-                                <img src="@Url.Content($"~/img/Lamborghini_pic/{Uri.EscapeDataString(Model.Title)}/{Uri.EscapeDataString(Model.Color)}/{file}")" alt="">
+                                <img src="@Url.Content($"~/img/Lamborghini_pic/{Uri.EscapeDataString(Model.Title)}/{Uri.EscapeDataString(Model.Color)}/{file.Img}")" alt="">
                             }
                         }
                         else
                         {
                             @foreach (var file in Model.Files)
                             {
-                                <img src="@Url.Content($"~/img/{Uri.EscapeDataString(Model.Title)}/{Uri.EscapeDataString(Model.Subtype)}/{file}")" alt="">
+                                <img src="@Url.Content($"~/img/{Uri.EscapeDataString(Model.Title)}_Lambo_pic/{Uri.EscapeDataString(Model.Subtype)}/{file.Img}")" alt="">
                             }
                         }
 
@@ -139,8 +139,8 @@
                 <div class="col-lg-4">
                     <div class="right-content">
                         <h4>@Model.Title</h4>
-                        <h5>@Model.Color</h5>
-                        <span class="price">$75.00</span>
+                        <h5>@Model.Files.First().CarModel</h5>
+                        <span class="price">TWD @Convert.ToInt32(@Model.Files.First().Price).ToString("N0")</span>
                         <ul class="stars">
                             <li><i class="fa fa-star"></i></li>
                             <li><i class="fa fa-star"></i></li>
