@@ -1,5 +1,96 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model double
+
+<head>
+    <link href="~/css/Checkout.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+
+</head>
+
+<p style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size:50px; justify-content:center; display:flex; margin-top:150px;">結帳頁</p>
+
+<div id="wrapper">
+    <div id="container">
+
+        <div id="info">
+
+            <br />
+             
+            <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; text-align:center; color:cornflowerblue;">
+                Thank you for believing in Lambobo.
+            </p>
+
+            @* <p>Total price: </p> *@
+
+            <div id="price">
+
+                <h2>TWD @($"{Model:N0}")</h2>
+            </div><br /><br /><br />
+            <img src="~/img/images/index_logo.png" style="width:293px; object-fit:cover;">
+        </div>
+
+        <div id="payment">
+
+            <form method="post" action="/Order/Confirm" id="checkout">
+
+                <br /><br /><br /><br /><br /><br />
+
+                <label>Credit Card Number</label>
+                <input id="cardnumber" type=text pattern="[0-9]{13,16}" name="cardnumber" requierd="true" placeholder="0123-4567-8901-2345">
+
+                <label>Card Holder</label>
+                <input id="cardholder" type="text" name="name" requierd="true" maxlength="50" placeholder="Cardholder">
+
+                <label>Expiration Date</label>
+                <label id="cvc-label">CVC/CVV</label>
+                <div id="left">
+                    <select name="month" id="month" onchange="" size="1">
+                        <option value="00">MM</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <p>/</p>
+                    <select name="year" id="year" onchange="" size="1">
+                        <option value="00">YY</option>
+                        <option value="01">16</option>
+                        <option value="02">17</option>
+                        <option value="03">18</option>
+                        <option value="04">19</option>
+                        <option value="05">20</option>
+                        <option value="06">21</option>
+                        <option value="07">22</option>
+                        <option value="08">23</option>
+                        <option value="09">24</option>
+                        <option value="10">25</option>
+                    </select>
+                </div>
+
+
+                <input id="cvc" type="text" name="cvc" placeholder="Cvc/Cvv" maxlength="3" />
+
+                <input class="btn" type="submit" name="purchase" value="送出">
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<!-- From Uiverse.io by marcelodolza -->
+<button class="button" onclick="history.back()">
+    <div class="wrap">
+        <p>
+            <span>✧</span>
+            <span>✦</span>
+            回上一頁
+        </p>
+    </div>
+</button>
