@@ -76,4 +76,12 @@ namespace Lamborghini.Models
         public int ProductId { get; set; }
         public int Quantity { get; set; }
     }
+
+    // 給 View 使用的 model
+    public class CartViewModel
+    {
+        public List<CartItem> CartItem { get; set; }
+        public List<Product> Product { get; set; }
+    }
+
 }

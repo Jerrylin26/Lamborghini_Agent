@@ -78,17 +78,9 @@
                                     <li><a href="~/Home/contact">Contact Us</a></li>
                                 </ul>
                             </li>
-                            <li class="submenu">
-                                <a href="javascript:;">Features</a>
-                                <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a rel="nofollow" href="https://templatemo.com/page/4" target="_blank">Template Page 4</a></li>
-                                </ul>
-                            </li>
-                            <li class="scroll-to-section"><a href="~/Home/index">Explore</a></li>
-                            <li class="scroll-to-section"><a href="/Account/Login">Login</a></li>
+
+                            <li class="scroll-to-section"><a href="/Account/Login">Login</a></li>&nbsp;&nbsp;&nbsp;
+                            <li class="scroll-to-section cart_count"><a href="~/Cart/Index"><img src="~/img/images/shopping_cart.svg" style="width:50px;">Cart(<span id="cartQuantity" style="color:red"></span>)</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -172,9 +164,9 @@
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="~/Product/Details?car_type=@Model.Title&car_color=@file.CarModel"><i class="fa fa-eye"></i></a></li>
+                                            <li title="查看車款"><a href="~/Product/Details?car_type=@Model.Title&car_color=@file.CarModel"><i class="fa fa-eye"></i></a></li>
                                             <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a class="cart_add" data-series="@file.CarSeries" data-model="@file.CarModel" data-pid="@file.PID"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li title="加入購物車" style="cursor: pointer;"><a class="cart_add" data-series="@file.CarSeries" data-model="@file.CarModel" data-pid="@file.PID"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <div style="width:350px; height:233.22px; overflow:hidden;">
@@ -206,9 +198,9 @@
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="~/Product/Details_1?car_type=@Model.Title&subtype=@file.CarModel"><i class="fa fa-eye"></i></a></li>
+                                            <li title="查看車款"><a href="~/Product/Details_1?car_type=@Model.Title&subtype=@file.CarModel"><i class="fa fa-eye"></i></a></li>
                                             <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a class="cart_add" data-series="@file.CarSeries" data-model="@file.CarModel" data-pid="@file.PID"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li title="加入購物車" style="cursor: pointer;"><a class="cart_add" data-series="@file.CarSeries" data-model="@file.CarModel" data-pid="@file.PID"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <div style="width:350px; height:233.22px; overflow:hidden;">
@@ -370,9 +362,9 @@
                 <div class="thumb">
                     <div class="hover-content">
                         <ul>
-                            <li><a href="/Product/Details?car_type=${encodeURIComponent(result.title)}&car_color=${encodeURIComponent(carColor)}"><i class="fa fa-eye"></i></a></li>
+                            <li title="查看車款"><a href="/Product/Details?car_type=${encodeURIComponent(result.title)}&car_color=${encodeURIComponent(carColor)}"><i class="fa fa-eye"></i></a></li>
                             <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                            <li><a class="cart_add" data-series="${file.carSeries}" data-model="${file.carModel}" data-pid="${file.pid}"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li title="加入購物車"  style="cursor: pointer;"><a class="cart_add" data-series="${file.carSeries}" data-model="${file.carModel}" data-pid="${file.pid}"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <img src="${imgSrc}" alt="">
@@ -428,9 +420,9 @@
                 <div class="thumb">
                     <div class="hover-content">
                         <ul>
-                            <li><a href="/Product/Details_1?car_type=${encodeURIComponent(result.title)}&subtype=${encodeURIComponent(subtype)}"><i class="fa fa-eye"></i></a></li>
+                            <li title="查看車款"><a href="/Product/Details_1?car_type=${encodeURIComponent(result.title)}&subtype=${encodeURIComponent(subtype)}"><i class="fa fa-eye"></i></a></li>
                             <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                            <li><a class="cart_add" data-series="${file.carSeries}" data-model="${file.carModel}" data-pid="${file.pid}"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li title="加入購物車"  style="cursor: pointer;"><a class="cart_add" data-series="${file.carSeries}" data-model="${file.carModel}" data-pid="${file.pid}"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div style="width:350px; height:233.22px; overflow:hidden;">
@@ -462,7 +454,7 @@
         });
     </script>
 
-    <!-- cart_add ajax-->
+    <!-- cart_add ajax  1. 確認加入cookie  2. 購物車數量即時更新-->
     <script>
         $(document).ready(function () {
            $(document).on("click", ".cart_add", function () {
@@ -480,8 +472,7 @@
                     success: function (result) {
 
                         if (result.success) {
-                            alert(`${foodName} : 已成功加入清單！`);
-                            // $("#cart_count").text(result.totalQuantity); 更新購物車數量
+                            $("#cartQuantity").text(result.totalQuantity); 更新購物車數量
                         }
 
                     },
@@ -492,6 +483,33 @@
             });
         });
     </script>
+
+    <!-- cart 購物數量即時更新 ajax 當每次進入不同頁面時-->
+    <script>
+        $(document).ready(function () {
+
+            $.ajax({
+                type: "POST",
+                url: "/Cart/GetCartCount",
+                data: {},
+                dataType: 'json',
+                withCredentials: true,
+                success: function (result) {
+
+                    if (result.success) {
+
+                        $("#cartQuantity").text(result.totalQuantity); 更新購物車數量
+                    }
+
+                },
+                error: function (xhr, status, error) {
+                    alert("發生錯誤：" + error);
+                }
+            });
+
+        });
+    </script>
+   
 
 
 </body>

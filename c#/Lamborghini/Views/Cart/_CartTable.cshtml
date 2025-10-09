@@ -1,0 +1,44 @@
+﻿@model CartViewModel
+
+@{
+    int count = 1;
+    double total = 0;
+}
+
+@foreach (var item in Model.Product)
+{
+    var quantity = Model.CartItem.FirstOrDefault(c => c.ProductId == item.PID)?.Quantity ?? 0;
+    var subtotal = item.Price * quantity;
+    total += subtotal;
+
+    <tr>
+        <td>@count</td>
+        <td>@item.CarSeries</td>
+        <td>@item.CarModel</td>
+        <td>@($"{item.Price:N0}")</td>
+        <td>@quantity</td>
+        <td>TWD @($"{item.Price * quantity:N0}")</td>
+        <td>
+            <span class="add_spec_cart_ajax" data-pid="@item.PID"
+                  style="font-weight:bold;color:deepskyblue; font-size:45px; cursor:pointer;">+</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="minus_spec_cart_ajax" data-pid="@item.PID"
+                  style="font-weight:bold;color:red; font-size:35px; cursor:pointer;">－</span>
+        </td>
+        <td class="delete_spec_cart_ajax" data-pid="@item.PID"
+            style="text-align:center; cursor:pointer;">
+            <img src="/img/images/delete.png" style="width:30px;">
+        </td>
+    </tr>
+
+    count++;
+}
+
+<tr style="border-top: 1px dashed #000;">
+    <td colspan="1" style="text-align:right;"><a class="buy_button" href="/Order/Checkout">確認付款</a></td>
+    <td colspan="1" style="text-align:right;"><a class="back_shop_button" href="/Product/List">繼續選購</a></td>
+    <td colspan="4" style="text-align:right;">總價:</td>
+    <td colspan="2">TWD @($"{total:N0}")</td>
+</tr>
+
+

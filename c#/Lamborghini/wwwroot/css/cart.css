@@ -1,0 +1,101 @@
+﻿html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(45deg, #49a09d, #5f2c82);
+    font-family: sans-serif;
+    font-weight: 100;
+}
+
+.container_table {
+    max-height: 80vh; /* 最大高度 80% 螢幕 */
+    overflow-y: auto; /* 超過高度出現滾動 */
+    width: 90%;
+    max-width: 1200px;
+    padding-left: 100px;
+}
+
+section#products {
+    width: 100%;
+    padding: 50px 0;
+    display: block;
+}
+
+table {
+    width: 800px;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+th,
+td {
+    padding: 15px;
+    background-color: rgba(255,255,255,0.2);
+    color: #fff;
+}
+
+th {
+    text-align: left;
+}
+
+thead th {
+    background-color: #55608f;
+}
+
+tbody tr:hover {
+    background-color: rgba(255,255,255,0.3);
+}
+
+td {
+    position: relative;
+}
+
+    td:hover::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -9999px;
+        bottom: -9999px;
+        background-color: rgba(255,255,255,0.2);
+        z-index: -1;
+    }
+
+.buy_button,
+.back_shop_button {
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 16px 18px 15px; /* 這裡用一樣的 padding */
+    white-space: nowrap;
+}
+
+/* 如果想要背景不同，可以覆蓋 */
+.buy_button {
+    background-image: linear-gradient(to right, #e052a0, #f15c41) !important;
+}
+
+.back_shop_button {
+    background-color: #007c89;
+    border: 1px solid transparent;
+    transition: background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+a {
+    color: inherit; /* 繼承父元素文字顏色 */
+    text-decoration: none; /* 取消底線 */
+}
+
+    a:hover {
+        color: inherit; /* hover 也不變色 */
+        text-decoration: none;
+    }
+

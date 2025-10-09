@@ -57,7 +57,7 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
+                        <a href="~/Home/index" class="logo">
                             <img src="~/img/images/index_logo.png" style="width:130px;height:80px;">
                         </a>
                         <!-- ***** Logo End ***** -->
@@ -76,17 +76,9 @@
                                     <li><a href="~/Home/Contact">Contact Us</a></li>
                                 </ul>
                             </li>
-                            <li class="submenu">
-                                <a href="javascript:;">Features</a>
-                                <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a rel="nofollow" href="https://templatemo.com/page/4" target="_blank">Template Page 4</a></li>
-                                </ul>
-                            </li>
-                            <li class="scroll-to-section"><a href="index.html">Explore</a></li>
-                            <li class="scroll-to-section"><a href="#explore">Login</a></li>
+
+                            <li class="scroll-to-section"><a href="~/Account/Login">Login</a></li>&nbsp;&nbsp;&nbsp;
+                            <li class="scroll-to-section cart_count"><a href="~/Cart/Index"><img src="~/img/images/shopping_cart.svg" style="width:50px;">Cart(<span id="cartQuantity" style="color:red"></span>)</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -140,7 +132,7 @@
                     <div class="right-content">
                         <h4>@Model.Title</h4>
                         <h5>@Model.Files.First().CarModel</h5>
-                        <span class="price">TWD @Convert.ToInt32(@Model.Files.First().Price).ToString("N0")</span>
+                        <span class="price unit_price">TWD @Convert.ToInt32(@Model.Files.First().Price).ToString("N0")</span>
                         <ul class="stars">
                             <li><i class="fa fa-star"></i></li>
                             <li><i class="fa fa-star"></i></li>
@@ -163,8 +155,8 @@
                             </div>
                         </div>
                         <div class="total">
-                            <h4>Total: $210.00</h4>
-                            <div class="main-border-button"><a href="#">Add To Cart</a></div>
+                            <h4 id="totalPrice">Total:  @Convert.ToInt32(@Model.Files.First().Price).ToString("N0")</h4>
+                            <div class="main-border-button ajax-add-to-cart" data-series="@Model.Title" data-model="@Model.Files.First().CarModel" data-pid="@Model.Files.First().PID" style="cursor:pointer"><a>Add To Cart</a></div>
 
                         </div>
                         <br />
@@ -279,6 +271,100 @@
               $("#portfolio").fadeTo(50, 1);
             }, 500);
 
+            });
+        });
+
+    </script>
+
+    <!-- cart 購物數量即時更新 ajax 當每次進入不同頁面時-->
+    <script>
+        $(document).ready(function () {
+
+            $.ajax({
+                type: "POST",
+                url: "/Cart/GetCartCount",
+                data: {},
+                dataType: 'json',
+                withCredentials: true,
+                success: function (result) {
+
+                    if (result.success) {
+
+                        $("#cartQuantity").text(result.totalQuantity); 更新購物車數量
+                    }
+
+                },
+                error: function (xhr, status, error) {
+                    alert("發生錯誤：" + error);
+                }
+            });
+
+        });
+    </script>
+
+
+    <!-- AddToCart_button  ajax  1. 確認加入cookie  2. 購物車數量即時更新-->
+    <script>
+        $(document).ready(function () {
+           $(document).on("click", ".ajax-add-to-cart", function () {
+                var CarSeries = $(this).data("series");
+                var CarModel = $(this).data("model");
+                var PID = $(this).data("pid");
+                var amount = $(".qty").val(); // 取得數量
+
+                console.log(CarSeries, CarModel, PID, amount);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Cart/AddToCookie",
+                    data: { Series: CarSeries, Model:CarModel, PID:PID, amount:amount },
+                    dataType: 'json',
+                    withCredentials: true,
+                    success: function (result) {
+
+                        if (result.success) {
+                            $("#cartQuantity").text(result.totalQuantity); 更新購物車數量
+                        }
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert("發生錯誤：" + error);
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            const unitPrice = parseInt($(".unit_price").text().replace(/[^0-9]/g, "")); // 單價
+
+            function updateTotal() {
+                const qty = parseInt($(".qty").val().replace(/[^0-9]/g, "")) || 1;
+                console.log(qty);
+                const total = unitPrice * qty;
+                $("#totalPrice").text("Total: "+ total.toLocaleString());
+            }
+
+            // 點擊 + 按鈕
+            $(".plus").click(function () {
+                setTimeout(updateTotal, 0) // 放入任務隊列
+                updateTotal();
+                
+            });
+
+            // 點擊 - 按鈕
+            $(".minus").click(function () {
+                setTimeout(updateTotal, 0) // 放入任務隊列
+                updateTotal();
+
+                
+            });
+
+            // 直接修改數字也觸發
+            $(".qty").on("input", function () {
+                updateTotal();
             });
         });
 

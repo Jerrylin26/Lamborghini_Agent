@@ -188,6 +188,56 @@ namespace Lamborghini.Models
             return products;
         }
 
+        // 讀取Product資料表 單一車款詳細資料 (int PID)
+        public List<Product> getDetail(int PID)
+        {
+            List<Product> products = new List<Product>();
+            using (SqlConnection sqlconnection = new SqlConnection(connStr))
+            {
+                sqlconnection.Open();
+                SqlCommand sqlcommand = new SqlCommand();
+
+
+                sqlcommand = new SqlCommand(@"
+                SELECT 
+                    p.PID AS ProductID,
+                    p.Price,
+                    p.CarSeriesID,
+                    p.CarModel,
+                    p.IsDisplay,
+                    c.SeriesName,
+                    pp.ImgFileName
+                    
+                FROM Product p
+                JOIN CarSeriesID c on p.CarSeriesID = c.CarSeriesID
+                LEFT JOIN ProductImage pp on pp.ProductID = p.PID
+                WHERE p.PID = @pid
+                ", sqlconnection);
+
+
+                sqlcommand.Parameters.AddWithValue("@pid", PID);
+
+
+                SqlDataReader reader = sqlcommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    Product product = new Product
+                    {
+                        PID = reader.GetInt32(reader.GetOrdinal("ProductID")),
+                        Price = reader.GetDouble(reader.GetOrdinal("Price")),
+                        CarSeriesID = reader.GetInt32(reader.GetOrdinal("CarSeriesID")),
+                        CarModel = reader.GetString(reader.GetOrdinal("CarModel")),
+                        IsDisplay = reader.GetBoolean(reader.GetOrdinal("IsDisplay")),
+                        CarSeries = reader.GetString(reader.GetOrdinal("SeriesName")),
+                        Img = reader.GetString(reader.GetOrdinal("ImgFileName"))
+                    };
+                    products.Add(product);
+                }
+
+            }
+            return products;
+        }
+
 
 
 

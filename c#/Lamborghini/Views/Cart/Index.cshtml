@@ -1,4 +1,6 @@
 ﻿
+@model CartViewModel
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,10 +25,11 @@
     <link rel="stylesheet" href="~/css/owl-carousel.css">
 
     <link rel="stylesheet" href="~/css/lightbox.css">
-
-
+    
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="~/css/cart.css">
     <!--
 
     TemplateMo 571 Hexashop
@@ -73,17 +76,8 @@
                                     <li><a href="~/Home/contact">Contact Us</a></li>
                                 </ul>
                             </li>
-                            <li class="submenu">
-                                <a href="#">Features</a>
-                                <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a rel="nofollow" href="https://templatemo.com/page/4" target="_blank">Template Page 4</a></li>
-                                </ul>
-                            </li>
-                            <li class="scroll-to-section"><a href="#explore">Explore</a></li>
                             <li class="scroll-to-section"><a href="~/Account/Login">Login</a></li>
+                            <li class="scroll-to-section cart_count"><a href="~/Cart/Index"><img src="~/img/images/shopping_cart.svg" style="width:50px;">Cart(<span id="cartQuantity" style="color:red"></span>)</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -95,71 +89,41 @@
         </div>
     </header>
 
+    <br />
+    <br />
+    <br />
+    <br />
 
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="first-item">
-                        <div class="logo">
-                            <img src="~/img/images/index_logo.png" style="width:130px;height:80px;">
-                        </div>
-                        <ul>
-                            <li><a href="#">16501 Collins Ave, Sunny Isles Beach, FL 33160, United States</a></li>
-                            <li><a href="#">hexashop@company.com</a></li>
-                            <li><a href="#">010-020-0340</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <h4>Shopping &amp; Categories</h4>
-                    <ul>
-                        <li><a href="#">Revuelto’s Shopping</a></li>
-                        <li><a href="#">Temerario’s Shopping</a></li>
-                        <li><a href="#">Urus_SE's Shopping</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h4>Useful Links</h4>
-                    <ul>
-                        <li><a href="#">Homepage</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h4>Help &amp; Information</h4>
-                    <ul>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">FAQ's</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Tracking ID</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-12">
-                    <div class="under-footer">
-                        <p>
-                            Copyright © 2022 HexaShop Co., Ltd. All Rights Reserved.
-
-                            <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a>
-                        </p>
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <section class="section" id="products">
+        <div class="container_table" >
+            <table>
+                <thead>
+                    <tr>
+                        <th style="text-align:center;">編號</th>
+                        <th style="text-align:center;">車系</th>
+                        <th style="text-align:center;">車款</th>
+                        <th style="text-align:center;">單價</th>
+                        <th style="text-align:center;">訂購數量</th>
+                        <th style="text-align:center;">總額</th>
+                        <th style="text-align:left;">修改</th>
+                        <th style="text-align:center;">刪除全部</th>
+                    </tr>
+                    
+                </thead>
+                <tbody id="cartBody">
+                    @Html.Partial("_CartTable", Model)
+                </tbody>
+            </table>
         </div>
-    </footer>
+    </section>
+
+
+
+    
 
 
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    @* <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> *@
     <script src="~/js/jquery-2.1.0.min.js"></script>
 
     <!-- Bootstrap -->
@@ -183,6 +147,139 @@
     <script src="~/js/custom.js"></script>
 
 
+    </script>
+
+    <!-- cart 購物數量即時更新 ajax 當每次進入不同頁面時-->
+    <script>
+        $(document).ready(function () {
+
+            $.ajax({
+                type: "POST",
+                url: "/Cart/GetCartCount",
+                data: {},
+                dataType: 'json',
+                withCredentials: true,
+                success: function (result) {
+
+                    if (result.success) {
+
+                        $("#cartQuantity").text(result.totalQuantity); 更新購物車數量
+                    }
+
+                },
+                error: function (xhr, status, error) {
+                    alert("發生錯誤：" + error);
+                }
+            });
+
+        });
+    </script>
+
+    <!-- Cart/Index 加1 ajax-->
+    <script>
+        $(document).ready(function () {  
+            $(document).on("click", ".add_spec_cart_ajax", function () {
+                var PID = $(this).data("pid"); // 取得ProductID
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Cart/AddSpecCart",
+                    data: {PID:PID},
+                    dataType: 'json',
+                    withCredentials: true,
+                    success: function (result) {
+                        console.log(result);
+                        if (result.success) {
+
+                            $("#cartQuantity").text(result.totalQuantity); //更新購物車數量
+                        }
+
+                        $.get("/Cart/GetCartTable", function (data) {
+                            console.log(data);
+                            $("#cartBody").html(data);  // cartBody 是 <tbody id="cartBody">
+                        });
+
+
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert("發生錯誤：" + error);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Cart/Index 減1 ajax-->
+    <script>
+        $(document).ready(function () {     
+            $(document).on("click", ".minus_spec_cart_ajax", function () {
+                var PID = $(this).data("pid"); // 取得ProductID
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Cart/MinusSpecCart",
+                    data: {PID:PID},
+                    dataType: 'json',
+                    withCredentials: true,
+                    success: function (result) {
+
+                        if (result.success) {
+
+                            $("#cartQuantity").text(result.totalQuantity); //更新購物車數量
+
+                            $.get("/Cart/GetCartTable", function (data) {
+                            console.log(data);
+                            $("#cartBody").html(data);  // cartBody 是 <tbody id="cartBody">
+                        });
+                        }else {
+                            alert(result.message); // 如果 success = false 顯示訊息
+                        }
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert("發生錯誤：" + error);
+                    }
+                });
+            });
+
+        });
+    </script>
+
+    <!-- Cart/Index 刪除 ajax-->
+    <script>
+        $(document).ready(function () {
+            $(document).on("click", ".delete_spec_cart_ajax", function () {
+                var PID = $(this).data("pid"); // 取得ProductID
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Cart/DeleteSpecCart",
+                    data: {PID:PID},
+                    dataType: 'json',
+                    withCredentials: true,
+                    success: function (result) {
+
+                        if (result.success) {
+
+                            $("#cartQuantity").text(result.totalQuantity); //更新購物車數量
+
+                            $.get("/Cart/GetCartTable", function (data) {
+                            console.log(data);
+                            $("#cartBody").html(data);  // cartBody 是 <tbody id="cartBody">
+                        });
+                        }else {
+                            alert(result.message); // 如果 success = false 顯示訊息
+                        }
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert("發生錯誤：" + error);
+                    }
+                });
+            });
+
+        });
     </script>
 
 </body>

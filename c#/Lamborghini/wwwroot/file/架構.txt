@@ -42,9 +42,8 @@ Index() → 顯示購物車內容
 
 Add(int productId) → 加入商品
 
-Remove(int productId) → 移除商品
 
-UpdateQuantity(int productId, int qty) → 更新數量
+
 
 ----------------------------------------------
 
