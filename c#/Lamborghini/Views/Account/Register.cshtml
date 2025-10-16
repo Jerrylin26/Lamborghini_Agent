@@ -1,6 +1,4 @@
-﻿@{
-    Layout = "";
-}
+﻿@model Lamborghini.Models.Member
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +52,7 @@
                         <a href="~/Home/Index" class="logo">
                             <img src="~/img/images/index_logo.png" style="width:130px;height:80px;">
                         </a>
-                        
+
                     </nav>
                 </div>
             </div>
@@ -66,27 +64,57 @@
         <h1>註冊表單</h1>
         <div class="main-agileinfo">
             <div class="agileits-top">
-                <form action="#" method="post">
-                    <input class="text" type="text" name="Username" placeholder="Username" required="">
-                    <input class="text email" type="email" name="email" placeholder="Email" required="">
-                    <input class="text" type="password" name="password" placeholder="Password" required="">
-                    <input class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
-                    <div class="wthree-text">
-                        <label class="anim">
-                            <input type="checkbox" class="checkbox" required="">
-                            <span>我同意規則事項 (勾選)</span>
-                        </label>
-                        <div class="clear"> </div>
+                <form id="myForm" asp-action="Register_post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Account" class="control-label"></label>
+                        <input asp-for="Account" class="form-control" />
+                        <span asp-validation-for="Account" class="text-danger"></span>
                     </div>
-                    <input type="submit" value="送出">
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Gender" class="control-label"></label>
+                        <select asp-for="Gender" class="form-control">
+                            <option value="">請選擇性別</option>
+                            <option value="boy">男</option>
+                            <option value="girl">女</option>
+                            <option value="other">其他</option>
+                        </select>
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Phone" class="control-label"></label>
+                        <input asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
                 </form>
                 <p>Don't have an Account? <a href="~/Account/Login"> 登入</a></p>
             </div>
         </div>
-        <!-- copyright -->
-        <div class="colorlibcopy-agile">
-            <p>© 2018 Colorlib Signup Form. All rights reserved | Design by <a href="https://colorlib.com/" target="_blank">Colorlib</a></p>
-        </div>
+
         <!-- //copyright -->
         <ul class="colorlib-bubbles">
             <li></li>
@@ -101,7 +129,24 @@
             <li></li>
         </ul>
     </div>
-    
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+
+
+    @* <script src="~/js/Email_Validation.js"></script> *@
+
+
 </body>
+
+
+
+
+
+
+
 
 </html>

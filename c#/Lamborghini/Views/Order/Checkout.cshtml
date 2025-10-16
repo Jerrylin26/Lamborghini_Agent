@@ -1,4 +1,4 @@
-﻿@model double
+﻿@model CheckoutViewModel
 
 <head>
     <link href="~/css/Checkout.css" rel="stylesheet" type="text/css">
@@ -23,7 +23,7 @@
 
             <div id="price">
 
-                <h2>TWD @($"{Model:N0}")</h2>
+                <h2>TWD @($"{Model.totalPrice:N0}")</h2>
             </div><br /><br /><br />
             <img src="~/img/images/index_logo.png" style="width:293px; object-fit:cover;">
         </div>
@@ -31,20 +31,22 @@
         <div id="payment">
 
             <form method="post" action="/Order/Confirm" id="checkout">
-
+                @Html.AntiForgeryToken()
                 <br /><br /><br /><br /><br /><br />
 
                 <label>Credit Card Number</label>
-                <input id="cardnumber" type=text pattern="[0-9]{13,16}" name="cardnumber" requierd="true" placeholder="0123-4567-8901-2345">
+                <input id="cardnumber" asp-for="Card.CardNumber" placeholder="0123-4567-8901-2345">
+                <span asp-validation-for="Card.CardNumber" class="text-danger"></span>
 
                 <label>Card Holder</label>
-                <input id="cardholder" type="text" name="name" requierd="true" maxlength="50" placeholder="Cardholder">
+                <input id="cardholder" asp-for="Card.Name" placeholder="Cardholder">
+                <span asp-validation-for="Card.Name" class="text-danger"></span>
 
                 <label>Expiration Date</label>
                 <label id="cvc-label">CVC/CVV</label>
                 <div id="left">
-                    <select name="month" id="month" onchange="" size="1">
-                        <option value="00">MM</option>
+                    <select asp-for="Card.Month" id="month" onchange="" size="1">
+                        <option value="">MM</option>
                         <option value="01">01</option>
                         <option value="02">02</option>
                         <option value="03">03</option>
@@ -58,24 +60,27 @@
                         <option value="11">11</option>
                         <option value="12">12</option>
                     </select>
+                    <span asp-validation-for="Card.Month" class="text-danger"></span>
                     <p>/</p>
-                    <select name="year" id="year" onchange="" size="1">
-                        <option value="00">YY</option>
-                        <option value="01">16</option>
-                        <option value="02">17</option>
-                        <option value="03">18</option>
-                        <option value="04">19</option>
-                        <option value="05">20</option>
-                        <option value="06">21</option>
-                        <option value="07">22</option>
-                        <option value="08">23</option>
-                        <option value="09">24</option>
-                        <option value="10">25</option>
+                    <select asp-for="Card.Year" id="year" onchange="" size="1">
+                        <option value="">YY</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
                     </select>
+                    <span asp-validation-for="Card.Year" class="text-danger"></span>
                 </div>
 
 
-                <input id="cvc" type="text" name="cvc" placeholder="Cvc/Cvv" maxlength="3" />
+                <input id="cvc" asp-for="Card.Cvc" placeholder="Cvc/Cvv" maxlength="3" />
+                <span asp-validation-for="Card.Cvc" class="text-danger"></span>
 
                 <input class="btn" type="submit" name="purchase" value="送出">
             </form>
@@ -94,3 +99,10 @@
         </p>
     </div>
 </button>
+
+<script src="~/js/jquery-2.1.0.min.js"></script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

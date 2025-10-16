@@ -76,17 +76,16 @@
                                     <li><a href="~/Home/Contact">Contact Us</a></li>
                                 </ul>
                             </li>
+                            
                             <li class="submenu">
-                                <a href="javascript:;">Features</a>
+                                <a href="#">User</a>
                                 <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a rel="nofollow" href="https://templatemo.com/page/4" target="_blank">Template Page 4</a></li>
+                                    <li><a href="~/Account/Login">Login</a></li>
+                                    <li><a href="~/Account/Logout">Logout</a></li>
                                 </ul>
-                            </li>
-                            <li class="scroll-to-section"><a href="index.html">Explore</a></li>
-                            <li class="scroll-to-section"><a href="#explore">Login</a></li>
+                            </li>&nbsp;&nbsp;&nbsp;
+                            <li class="scroll-to-section cart_count"><a href="~/Cart/Index"><img src="~/img/images/shopping_cart.svg" style="width:50px;">Cart(<span id="cartQuantity" style="color:red"></span>)</a></li>
+                            <li class="scroll-to-section"><img src="~/img/images/user_pic.jpg" style="width:50px;"><span id="user_Name">尚未登入</span></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -100,16 +99,19 @@
  
         <div class="wrapper">
             <div class="title"><span>登入表單</span></div>
-            <form action="#">
+        <form id="loginForm">
                 <div class="row">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Email or Phone" required />
+                <input type="text" id="Account" placeholder="帳號/手機/信箱" required oninvalid="this.setCustomValidity('請輸入帳號/信箱/手機')"
+                       oninput="this.setCustomValidity('')">
                 </div>
                 <div class="row">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" required />
+                <input type="password" id="Password" placeholder="密碼" required oninvalid="this.setCustomValidity('請輸入密碼')"
+                       oninput="this.setCustomValidity('')">
                 </div>
                 <div class="pass"><a href="#">忘記密碼?</a></div>
+            <div id="errorMessage" style="color:red"></div>
                 <div class="row button">
                     <input type="submit" value="登入" />
                 </div>
@@ -154,6 +156,97 @@
               $("#portfolio").fadeTo(50, 1);
             }, 500);
 
+            });
+        });
+
+    </script>
+
+
+    <!-- 登入 ajax -->
+    <script>
+        $(document).ready(function(){
+            $("#loginForm").on("submit", function(e){
+                e.preventDefault(); // 阻止頁面跳轉
+
+                var Account = $("#Account").val();
+                var Password = $("#Password").val();
+                // console.log("Account: ",Account);
+                // console.log("Password: ",Password);
+
+
+                $.ajax({
+                    url: "/Account/Login_post",
+                    type: "POST",
+                    dataType: 'json',
+                    data: { Account: Account, Password: Password },
+                    success: function(res){
+                        if(! res.success){
+                            $("#errorMessage").text(res.message);
+
+                        }else{
+                            window.location.href = res.redirectUrl;
+                        }
+                    },
+                    error: function(xhr){
+                        console.log(xhr.responseText);
+                        $("#errorMessage").text("伺服器錯誤");
+                    }
+                });
+            });
+        });
+
+
+
+    </script>
+
+
+    <!-- 註冊成功提示 -->
+    @if (TempData["Message"] != null)
+    {
+        <script>
+            alert(@Html.Raw(System.Text.Json.JsonSerializer.Serialize(TempData["Message"])));
+        </script>
+    }
+
+   
+
+    <!-- cart 購物數量即時更新 ajax 當每次進入不同頁面時-->
+    <script>
+        $(document).ready(function () {
+
+            $.ajax({
+                type: "POST",
+                url: "/Cart/GetCartCount",
+                data: {},
+                dataType: 'json',
+                withCredentials: true,
+                success: function (result) {
+
+                    if (result.success) {
+
+                        $("#cartQuantity").text(result.totalQuantity); 更新購物車數量
+                    }
+
+                },
+                error: function (xhr, status, error) {
+                    alert("發生錯誤：" + error);
+                }
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // 每次確認是否登入 從cookie找資料
+            $.ajax({
+                type: "GET",
+                url: "/Account/LoginCheck",
+                dataType: 'json',
+                success: function(result) {
+                    $("#user_Name").text(result.loginName);
+
+                }
             });
         });
 

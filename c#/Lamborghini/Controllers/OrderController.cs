@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text.Json;
 
 
@@ -31,9 +32,40 @@ namespace Lamborghini.Controllers
 
             }
 
-            return View(totalPrice);
+            var vm = new CheckoutViewModel
+            {
+                totalPrice = totalPrice
+            };
+
+            return View(vm);
 
         }
+
+        // 接收 Order/Checkout 表單
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Confirm(CheckoutViewModel cardinfo)
+        {
+            if (!ModelState.IsValid)
+            {
+                foreach (var kvp in ModelState)
+                {
+                    foreach (var error in kvp.Value.Errors)
+                    {
+                        Debug.WriteLine($"Key:{kvp.Key}, Error:{error.ErrorMessage}");
+                    }
+                }
+                // 驗證失敗 → 回原畫面並顯示錯誤訊息
+                return View("Checkout", cardinfo);
+            }
+            
+
+            // 驗證通過，可以使用 card.CardNumber、card.Name 等
+            Debug.WriteLine($"{cardinfo.Card.Name} 使用卡號1 {cardinfo.Card.CardNumber}");
+            return View("Confirm");
+        }
+
+        [HttpGet]
         public IActionResult Confirm()
         {
             return View();

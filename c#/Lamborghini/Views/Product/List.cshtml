@@ -79,8 +79,16 @@
                                 </ul>
                             </li>
 
-                            <li class="scroll-to-section"><a href="/Account/Login">Login</a></li>&nbsp;&nbsp;&nbsp;
+                            <li class="submenu">
+                                <a href="#">User</a>
+                                <ul>
+                                    <li><a href="~/Account/Login">Login</a></li>
+                                    <li><a href="~/Account/Logout">Logout</a></li>
+                                </ul>
+                            </li>&nbsp;&nbsp;&nbsp;
                             <li class="scroll-to-section cart_count"><a href="~/Cart/Index"><img src="~/img/images/shopping_cart.svg" style="width:50px;">Cart(<span id="cartQuantity" style="color:red"></span>)</a></li>
+                            <li class="scroll-to-section"><img src="~/img/images/user_pic.jpg" style="width:50px;"><span id="user_Name">尚未登入</span></li>
+                        
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -165,7 +173,6 @@
                                     <div class="hover-content">
                                         <ul>
                                             <li title="查看車款"><a href="~/Product/Details?car_type=@Model.Title&car_color=@file.CarModel"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
                                             <li title="加入購物車" style="cursor: pointer;"><a class="cart_add" data-series="@file.CarSeries" data-model="@file.CarModel" data-pid="@file.PID"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
@@ -177,13 +184,6 @@
                                 <div class="down-content">
                                     <h4>@file.CarModel</h4>
                                     <span>TWD @($"{file.Price:N0}")</span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -199,7 +199,6 @@
                                     <div class="hover-content">
                                         <ul>
                                             <li title="查看車款"><a href="~/Product/Details_1?car_type=@Model.Title&subtype=@file.CarModel"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
                                             <li title="加入購物車" style="cursor: pointer;"><a class="cart_add" data-series="@file.CarSeries" data-model="@file.CarModel" data-pid="@file.PID"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
@@ -211,13 +210,6 @@
                                 <div class="down-content">
                                     <h4>@file.CarModel</h4>
                                     <span>TWD @($"{file.Price:N0}")</span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -363,7 +355,6 @@
                     <div class="hover-content">
                         <ul>
                             <li title="查看車款"><a href="/Product/Details?car_type=${encodeURIComponent(result.title)}&car_color=${encodeURIComponent(carColor)}"><i class="fa fa-eye"></i></a></li>
-                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
                             <li title="加入購物車"  style="cursor: pointer;"><a class="cart_add" data-series="${file.carSeries}" data-model="${file.carModel}" data-pid="${file.pid}"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
@@ -372,13 +363,6 @@
                 <div class="down-content">
                     <h4>${carColor}</h4> 
                     <span>TWD ${Number(file.price).toLocaleString()}</span>
-                    <ul class="stars">
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                    </ul>
                 </div>
             </div>
         </div>`;
@@ -421,7 +405,6 @@
                     <div class="hover-content">
                         <ul>
                             <li title="查看車款"><a href="/Product/Details_1?car_type=${encodeURIComponent(result.title)}&subtype=${encodeURIComponent(subtype)}"><i class="fa fa-eye"></i></a></li>
-                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
                             <li title="加入購物車"  style="cursor: pointer;"><a class="cart_add" data-series="${file.carSeries}" data-model="${file.carModel}" data-pid="${file.pid}"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
@@ -432,13 +415,6 @@
                 <div class="down-content">
                     <h4>${subtype}</h4>
                     <span>TWD ${Number(file.price).toLocaleString()}</span>
-                    <ul class="stars">
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                    </ul>
                 </div>
             </div>
         </div>`;
@@ -508,6 +484,23 @@
             });
 
         });
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
+            // 每次確認是否登入 從cookie找資料
+            $.ajax({
+                type: "GET",
+                url: "/Account/LoginCheck",
+                dataType: 'json',
+                success: function(result) {
+                    $("#user_Name").text(result.loginName);
+
+                }
+            });
+        });
+
     </script>
    
 

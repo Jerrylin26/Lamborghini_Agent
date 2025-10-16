@@ -77,8 +77,16 @@
                                 </ul>
                             </li>
 
-                            <li class="scroll-to-section"><a href="~/Account/Login">Login</a></li>&nbsp;&nbsp;&nbsp;
+                            <li class="submenu">
+                                <a href="#">User</a>
+                                <ul>
+                                    <li><a href="~/Account/Login">Login</a></li>
+                                    <li><a href="~/Account/Logout">Logout</a></li>
+                                </ul>
+                            </li>&nbsp;&nbsp;&nbsp;
                             <li class="scroll-to-section cart_count"><a href="~/Cart/Index"><img src="~/img/images/shopping_cart.svg" style="width:50px;">Cart(<span id="cartQuantity" style="color:red"></span>)</a></li>
+                            <li class="scroll-to-section"><img src="~/img/images/user_pic.jpg" style="width:50px;"><span id="user_Name">尚未登入</span></li>
+                        
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -336,6 +344,7 @@
     </script>
 
 
+    <!--  Details.cshtml 選取數量,即時更新總價 -->
     <script>
         $(document).ready(function () {
             const unitPrice = parseInt($(".unit_price").text().replace(/[^0-9]/g, "")); // 單價
@@ -365,6 +374,22 @@
             // 直接修改數字也觸發
             $(".qty").on("input", function () {
                 updateTotal();
+            });
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // 每次確認是否登入 從cookie找資料
+            $.ajax({
+                type: "GET",
+                url: "/Account/LoginCheck",
+                dataType: 'json',
+                success: function(result) {
+                    $("#user_Name").text(result.loginName);
+
+                }
             });
         });
 

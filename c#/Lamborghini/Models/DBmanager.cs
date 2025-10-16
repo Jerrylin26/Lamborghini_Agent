@@ -39,7 +39,8 @@ namespace Lamborghini.Models
                         Address = reader.GetString(reader.GetOrdinal("Address")),
                         Email = reader.GetString(reader.GetOrdinal("Email")),
                         Account = reader.GetString(reader.GetOrdinal("Account")),
-                        
+                        Gender = reader.GetString(reader.GetOrdinal("Gender")),
+
                     };
                     accounts.Add(account);
                 }
@@ -56,7 +57,7 @@ namespace Lamborghini.Models
         public void newAccount(Member user)
         {
             SqlConnection sqlconnection = new SqlConnection(connStr);
-            SqlCommand sqlcommand = new SqlCommand(@"INSERT INTO Member(Password,Account,Name,Address,Phone,Email) VALUES(@password,@account,@name,@address,@phone,@email)");
+            SqlCommand sqlcommand = new SqlCommand(@"INSERT INTO Member(Password,Account,Name,Address,Phone,Email,Gender) VALUES(@password,@account,@name,@address,@phone,@email,@gender)");
             sqlcommand.Connection = sqlconnection;
 
             sqlcommand.Parameters.Add(new SqlParameter("@name", user.Name));
@@ -65,6 +66,7 @@ namespace Lamborghini.Models
             sqlcommand.Parameters.Add(new SqlParameter("@email", user.Email));
             sqlcommand.Parameters.Add(new SqlParameter("@address", user.Address));
             sqlcommand.Parameters.Add(new SqlParameter("@phone", user.Phone));
+            sqlcommand.Parameters.Add(new SqlParameter("@gender", user.Gender));
 
 
             sqlconnection.Open();

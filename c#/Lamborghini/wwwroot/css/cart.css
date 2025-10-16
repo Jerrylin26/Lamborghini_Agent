@@ -13,9 +13,8 @@ body {
 .container_table {
     max-height: 80vh; /* 最大高度 80% 螢幕 */
     overflow-y: auto; /* 超過高度出現滾動 */
-    width: 90%;
     max-width: 1200px;
-    padding-left: 100px;
+    padding-left: 50px;
 }
 
 section#products {
@@ -25,10 +24,12 @@ section#products {
 }
 
 table {
-    width: 800px;
+    max-width: 1000px;
+    width: 100%;
     border-collapse: collapse;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    table-layout: fixed;
 }
 
 th,

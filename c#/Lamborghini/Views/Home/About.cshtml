@@ -74,17 +74,16 @@ https://templatemo.com/tm-571-hexashop
                                     <li><a href="~/Home/contact">Contact Us</a></li>
                                 </ul>
                             </li>
+                            
                             <li class="submenu">
-                                <a href="javascript:;">Features</a>
+                                <a href="#">User</a>
                                 <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a rel="nofollow" href="https://templatemo.com/page/4" target="_blank">Template Page 4</a></li>
+                                    <li><a href="~/Account/Login">Login</a></li>
+                                    <li><a href="~/Account/Logout">Logout</a></li>
                                 </ul>
-                            </li>
-                            <li class="scroll-to-section"><a href="~/Home/index">Explore</a></li>
-                            <li class="scroll-to-section"><a href="~/Account/Login">Login</a></li>
+                            </li>&nbsp;&nbsp;&nbsp;
+                            <li class="scroll-to-section cart_count"><a href="~/Cart/Index"><img src="~/img/images/shopping_cart.svg" style="width:50px;">Cart(<span id="cartQuantity" style="color:red"></span>)</a></li>
+                            <li class="scroll-to-section"><img src="~/img/images/user_pic.jpg" style="width:50px;"><span id="user_Name">尚未登入</span></li>
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -404,6 +403,49 @@ https://templatemo.com/tm-571-hexashop
               $("#portfolio").fadeTo(50, 1);
             }, 500);
                 
+            });
+        });
+
+    </script>
+
+
+    <!-- cart 購物數量即時更新 ajax 當每次進入不同頁面時-->
+    <script>
+        $(document).ready(function () {
+
+            $.ajax({
+                type: "POST",
+                url: "/Cart/GetCartCount",
+                data: {},
+                dataType: 'json',
+                withCredentials: true,
+                success: function (result) {
+
+                    if (result.success) {
+
+                        $("#cartQuantity").text(result.totalQuantity); 更新購物車數量
+                    }
+
+                },
+                error: function (xhr, status, error) {
+                    alert("發生錯誤：" + error);
+                }
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // 每次確認是否登入 從cookie找資料
+            $.ajax({
+                type: "GET",
+                url: "/Account/LoginCheck",
+                dataType: 'json',
+                success: function(result) {
+                    $("#user_Name").text(result.loginName);
+
+                }
             });
         });
 

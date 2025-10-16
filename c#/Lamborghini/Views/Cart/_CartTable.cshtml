@@ -8,22 +8,32 @@
 @foreach (var item in Model.Product)
 {
     var quantity = Model.CartItem.FirstOrDefault(c => c.ProductId == item.PID)?.Quantity ?? 0;
+    
     var subtotal = item.Price * quantity;
     total += subtotal;
 
     <tr>
         <td>@count</td>
+        @if (item.CarSeries == "Revuelto" || item.CarSeries == "Temerario" || item.CarSeries == "Urus_SE")
+        {
+            <td><img src="/img/Lamborghini_pic/@(item.CarSeries)/@item.CarModel/@item.Img" style="width:150px; height:100px; object-fit:cover;"></td>
+        }
+        else
+        {
+            <td><img src="/img/@(item.CarSeries)_Lambo_pic/@item.CarModel/@item.Img" style="width:150px; height:100px; object-fit:cover;"></td>
+            
+        }
         <td>@item.CarSeries</td>
         <td>@item.CarModel</td>
         <td>@($"{item.Price:N0}")</td>
-        <td>@quantity</td>
+        <td style="text-align:center;">@quantity</td>
         <td>TWD @($"{item.Price * quantity:N0}")</td>
         <td>
-            <span class="add_spec_cart_ajax" data-pid="@item.PID"
-                  style="font-weight:bold;color:deepskyblue; font-size:45px; cursor:pointer;">+</span>
+            <button class="add_spec_cart_ajax" data-pid="@item.PID"
+                  style="font-weight:bold;color:deepskyblue; font-size:45px; cursor:pointer; border:none; background-color:transparent;">+</button>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <span class="minus_spec_cart_ajax" data-pid="@item.PID"
-                  style="font-weight:bold;color:red; font-size:35px; cursor:pointer;">－</span>
+            <button class="minus_spec_cart_ajax" data-pid="@item.PID"
+                    style="font-weight:bold;color:coral; font-size:33px; cursor:pointer; border:none; background-color:transparent;">－</button>
         </td>
         <td class="delete_spec_cart_ajax" data-pid="@item.PID"
             style="text-align:center; cursor:pointer;">
@@ -35,9 +45,9 @@
 }
 
 <tr style="border-top: 1px dashed #000;">
-    <td colspan="1" style="text-align:right;"><a class="buy_button" href="/Order/Checkout">前往付款</a></td>
-    <td colspan="1" style="text-align:right;"><a class="back_shop_button" href="/Product/List">繼續選購</a></td>
-    <td colspan="4" style="text-align:right;">總價:</td>
+    <td colspan="2" style="text-align:right;"><a class="buy_button" href="/Order/Checkout">前往付款</a></td>
+    <td colspan="2" style="text-align:left;"><a class="back_shop_button" href="/Product/List">繼續選購</a></td>
+    <td colspan="3" style="text-align:right;">總價:</td>
     <td colspan="2">TWD @($"{total:N0}")</td>
 </tr>
 

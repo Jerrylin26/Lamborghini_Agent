@@ -76,8 +76,15 @@
                                     <li><a href="~/Home/contact">Contact Us</a></li>
                                 </ul>
                             </li>
-                            <li class="scroll-to-section"><a href="~/Account/Login">Login</a></li>
+                            <li class="submenu">
+                                <a href="#">User</a>
+                                <ul>
+                                    <li><a href="~/Account/Login">Login</a></li>
+                                    <li><a href="~/Account/Logout">Logout</a></li>
+                                </ul>
+                            </li>&nbsp;&nbsp;&nbsp;
                             <li class="scroll-to-section cart_count"><a href="~/Cart/Index"><img src="~/img/images/shopping_cart.svg" style="width:50px;">Cart(<span id="cartQuantity" style="color:red"></span>)</a></li>
+                            <li class="scroll-to-section"><img src="~/img/images/user_pic.jpg" style="width:50px;"><span id="user_Name">尚未登入</span></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -99,14 +106,16 @@
             <table>
                 <thead>
                     <tr>
-                        <th style="text-align:center;">編號</th>
-                        <th style="text-align:center;">車系</th>
-                        <th style="text-align:center;">車款</th>
-                        <th style="text-align:center;">單價</th>
-                        <th style="text-align:center;">訂購數量</th>
-                        <th style="text-align:center;">總額</th>
-                        <th style="text-align:left;">修改</th>
-                        <th style="text-align:center;">刪除全部</th>
+                        <th style="text-align:center; width:60px;">編號</th>
+                        <th style="text-align:center; width:200px;">圖片</th>
+                        <th style="text-align:center; width:100px;">車系</th>
+                        <th style="text-align:center; width:200px;">車款</th>
+                        <th style="text-align:center; width:100px;">單價</th>
+                        <th style="text-align:center; width:60px;">訂購數量</th>
+                        <th style="text-align:left; width:120px;">總額</th>
+                        <th style="text-align:center; width:60px;">修改</th>
+                        <th style="text-align:center; width:120px;">刪除全部</th>
+
                     </tr>
                     
                 </thead>
@@ -280,6 +289,22 @@
             });
 
         });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // 每次確認是否登入 從cookie找資料
+            $.ajax({
+                type: "GET",
+                url: "/Account/LoginCheck",
+                dataType: 'json',
+                success: function(result) {
+                    $("#user_Name").text(result.loginName);
+
+                }
+            });
+        });
+
     </script>
 
 </body>
